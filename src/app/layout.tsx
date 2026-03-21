@@ -124,7 +124,7 @@ const jsonLd = {
   "@type": "LocalBusiness",
   name: "Jaga Care",
   description: "Home safety setup and care coordination for aging parents",
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://jagacare.com",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://jaga.care",
   areaServed: [
     { "@type": "Country", name: "Malaysia" },
     { "@type": "Country", name: "Singapore" },
