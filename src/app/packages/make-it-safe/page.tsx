@@ -7,8 +7,16 @@ import Link from "next/link";
 const pkg = packages.find(p => p.slug === "make-it-safe")!;
 
 export const metadata: Metadata = {
-  title: "Make It Safe — Fall Prevention & Home Safety",
-  description: "Grab bars, anti-slip mats, cameras, and accessible bed setup. Prevent falls and make your parent's home safe. Malaysia & Singapore.",
+  title: "Make It Safe — Fall Prevention & Home Safety Setup",
+  description: "Professional grab bars installation, anti-slip mats, safety cameras, and accessible bed setup. Prevent elderly falls at home. Serving Malaysia & Singapore.",
+  keywords: [
+    "grab bars installation Malaysia", "grab bars installation Singapore",
+    "anti-slip bathroom elderly", "fall prevention elderly home",
+    "elderly bathroom safety", "home safety assessment elderly",
+    "palang bilik mandi warga emas", "keselamatan rumah warga emas",
+    "prevent falls elderly", "bathroom modification elderly",
+    "elderly home safety equipment", "safety cameras elderly home",
+  ],
 };
 
 export default function MakeItSafePage() {

@@ -7,8 +7,17 @@ import Link from "next/link";
 const pkg = packages.find(p => p.slug === "someone-by-their-side")!;
 
 export const metadata: Metadata = {
-  title: "Someone By Their Side — Full Care with Dedicated Caregiver",
-  description: "Complete home safety setup with a dedicated caregiver for hands-on daily support. For parents recovering from major surgery or with cognitive decline. Malaysia & Singapore.",
+  title: "Someone By Their Side — Dedicated Caregiver & Full Home Setup",
+  description: "Complete home safety setup with a dedicated caregiver for daily support. For parents recovering from major surgery, stroke, or with dementia. Malaysia & Singapore.",
+  keywords: [
+    "caregiver Malaysia", "caregiver Singapore",
+    "home caregiver elderly", "dedicated caregiver service",
+    "elderly daily care support", "dementia care home Malaysia",
+    "stroke recovery caregiver", "penjaga pesakit Malaysia",
+    "home nursing care Malaysia", "home nursing care Singapore",
+    "live-in caregiver Malaysia", "elderly companion care",
+    "post surgery caregiver", "full time caregiver elderly",
+  ],
 };
 
 export default function SomeoneByTheirSidePage() {

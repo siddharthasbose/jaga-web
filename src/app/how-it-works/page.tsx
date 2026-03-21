@@ -4,8 +4,15 @@ import { AnimateIn } from "@/components/animate-in";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "How It Works — Home Safety Setup in 1 Week",
-  description: "Four simple steps: snap your space, get a proposal, pick your date, home ready in 1 week. Serving families in Malaysia and Singapore.",
+  title: "How It Works — Home Ready in 1 Week",
+  description: "Four simple steps to set up your home for elderly care: send photos, get a quote, pick a date, home ready in 1 week. Professional setup in Malaysia and Singapore.",
+  keywords: [
+    "how to set up home for elderly", "home setup after hospital discharge",
+    "prepare home after stroke", "prepare home after surgery",
+    "elderly home modification process", "home safety assessment",
+    "hospital discharge checklist Malaysia", "hospital discharge checklist Singapore",
+    "cara sediakan rumah untuk warga emas", "home care setup process",
+  ],
 };
 
 export default function HowItWorksPage() {

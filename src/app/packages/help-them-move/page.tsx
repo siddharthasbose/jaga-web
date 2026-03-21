@@ -7,8 +7,17 @@ import Link from "next/link";
 const pkg = packages.find(p => p.slug === "help-them-move")!;
 
 export const metadata: Metadata = {
-  title: "Help Them Move — Mobility Support & Equipment",
-  description: "Hospital bed, wheelchair, grab bars, and full mobility equipment setup. For parents with reduced mobility after stroke or surgery. Malaysia & Singapore.",
+  title: "Help Them Move — Hospital Bed & Mobility Equipment Rental",
+  description: "Hospital bed rental, wheelchair, grab bars, and full mobility equipment setup at home. For parents recovering from stroke or surgery. Malaysia & Singapore.",
+  keywords: [
+    "hospital bed rental Malaysia", "hospital bed rental Singapore",
+    "wheelchair rental Malaysia", "wheelchair rental Singapore",
+    "home hospital bed setup", "mobility equipment elderly",
+    "stroke recovery home setup", "post surgery home care",
+    "sewa katil hospital Malaysia", "kerusi roda sewa Malaysia",
+    "hip replacement home setup", "reduced mobility elderly home",
+    "medical equipment rental home", "home recovery equipment",
+  ],
 };
 
 export default function HelpThemMovePage() {
