@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Playfair_Display, DM_Sans } from "next/font/google";
+import Script from "next/script";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 import "./globals.css";
@@ -17,9 +18,43 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Jaga Care — Home Ready Before They Are",
+  title: {
+    default: "Jaga Care — Home Ready Before They Are",
+    template: "%s | Jaga Care",
+  },
   description:
     "We set up grab bars, hospital beds, and safety equipment so your parent's home is ready before hospital discharge. Serving Malaysia and Singapore.",
+  keywords: [
+    "home safety setup Malaysia",
+    "elderly care Singapore",
+    "post-stroke home setup",
+    "grab bars installation",
+    "hospital bed rental Malaysia",
+    "home modification elderly",
+    "fall prevention elderly Malaysia",
+  ],
+  openGraph: {
+    type: "website",
+    locale: "en_SG",
+    url: process.env.NEXT_PUBLIC_SITE_URL,
+    siteName: "Jaga Care",
+    title: "Jaga Care — Home Ready Before They Are",
+    description:
+      "Home safety setup for aging parents. Serving Malaysia & Singapore.",
+  },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: "Jaga Care",
+  description: "Home safety setup and care coordination for aging parents",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://jagacare.com",
+  areaServed: [
+    { "@type": "Country", name: "Malaysia" },
+    { "@type": "Country", name: "Singapore" },
+  ],
+  serviceType: "Home Healthcare Setup",
 };
 
 export default function RootLayout({
@@ -39,11 +74,26 @@ export default function RootLayout({
         >
           Skip to content
         </a>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <Nav />
         <main id="main-content" className="flex-1 pt-[72px]">
           {children}
         </main>
         <Footer />
+        {process.env.NEXT_PUBLIC_GA_ID && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="ga4" strategy="afterInteractive">
+              {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','${process.env.NEXT_PUBLIC_GA_ID}');`}
+            </Script>
+          </>
+        )}
       </body>
     </html>
   );
