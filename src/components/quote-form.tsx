@@ -1,17 +1,16 @@
 "use client";
 
-import { useState, useRef, useCallback, type FormEvent } from "react";
+import { useState, type FormEvent } from "react";
 import { AnimateIn } from "@/components/animate-in";
-import { useImageUpload } from "@/hooks/use-image-upload";
 import { submitLead } from "@/lib/actions";
 import { trackEvent } from "@/lib/analytics";
 
-type FormState = "idle" | "submitting" | "success" | "partial" | "error";
+type FormState = "idle" | "submitting" | "success" | "error";
 
 const steps = [
   {
-    title: "Share photos or describe",
-    desc: "Bathroom, bedroom, hallways — whatever needs work",
+    title: "Tell us what you need",
+    desc: "Describe the situation or send photos via WhatsApp",
   },
   {
     title: "We plan & quote",
@@ -19,7 +18,7 @@ const steps = [
   },
   {
     title: "We set up before discharge",
-    desc: "Everything installed and ready — within 48 hours",
+    desc: "Everything installed and ready — within 1 week",
   },
 ];
 
@@ -55,29 +54,13 @@ export function QuoteForm() {
   const [phoneError, setPhoneError] = useState("");
   const [message, setMessage] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
-  const [dragOver, setDragOver] = useState(false);
-
-  const fileInputRef = useRef<HTMLInputElement>(null);
-  const { files, uploading, addFiles, removeFile, uploadAll } =
-    useImageUpload(5);
 
   const waNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "";
   const waUrl = `https://wa.me/${waNumber}?text=${encodeURIComponent(
-    "Hi, I'd like to send more details about my care request."
+    "Hi, I'd like to send photos of my space and get a quote."
   )}`;
 
-  const disabled = formState === "submitting" || uploading;
-
-  const handleDrop = useCallback(
-    (e: React.DragEvent) => {
-      e.preventDefault();
-      setDragOver(false);
-      if (e.dataTransfer.files.length > 0) {
-        addFiles(e.dataTransfer.files);
-      }
-    },
-    [addFiles]
-  );
+  const disabled = formState === "submitting";
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -91,26 +74,10 @@ export function QuoteForm() {
 
     setFormState("submitting");
 
-    // Upload photos first
-    let photoPaths: string[] = [];
-    let photosFailed = false;
-    if (files.length > 0) {
-      try {
-        photoPaths = await uploadAll();
-        if (photoPaths.length < files.length) {
-          photosFailed = true;
-        }
-      } catch {
-        photosFailed = true;
-      }
-    }
-
-    // Submit lead
     const result = await submitLead({
       name,
       phone,
       message: message || undefined,
-      photos: photoPaths.length > 0 ? photoPaths : undefined,
       source: "website_quote_form",
     });
 
@@ -121,12 +88,7 @@ export function QuoteForm() {
     }
 
     trackEvent("form_submit", { source: "quote_form" });
-
-    if (photosFailed) {
-      setFormState("partial");
-    } else {
-      setFormState("success");
-    }
+    setFormState("success");
   };
 
   return (
@@ -143,8 +105,8 @@ export function QuoteForm() {
                 Send us pictures of your space. We&rsquo;ll handle the rest.
               </h2>
               <p className="mt-4 text-lg leading-relaxed text-text-muted">
-                Snap a few photos of the rooms that need work — or just describe
-                the situation. We&rsquo;ll come back with a plan and a quote.
+                Fill out the form or send photos directly via WhatsApp — we&rsquo;ll
+                come back with a plan and a quote.
               </p>
 
               {/* Steps */}
@@ -172,7 +134,7 @@ export function QuoteForm() {
               {/* Header bar */}
               <div className="flex items-center justify-between border-b border-warm-gray px-6 py-4">
                 <p className="font-semibold text-text">Get a free quote</p>
-                <p className="text-sm text-text-faint">Takes 2 minutes</p>
+                <p className="text-sm text-text-faint">Takes 1 minute</p>
               </div>
 
               {/* Body */}
@@ -189,138 +151,11 @@ export function QuoteForm() {
                       rel="noopener noreferrer"
                       className="mt-4 inline-block text-sm font-medium text-green underline underline-offset-2 hover:opacity-80"
                     >
-                      Send more details via WhatsApp
-                    </a>
-                  </div>
-                ) : formState === "partial" ? (
-                  <div className="py-8 text-center">
-                    <p className="font-serif text-xl text-text">
-                      Your request was received!
-                    </p>
-                    <p className="mt-2 text-sm text-text-muted">
-                      Some photos didn&rsquo;t upload — you can send them via
-                      WhatsApp.
-                    </p>
-                    <a
-                      href={waUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-4 inline-block text-sm font-medium text-green underline underline-offset-2 hover:opacity-80"
-                    >
-                      Send photos via WhatsApp
+                      Send photos via WhatsApp →
                     </a>
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-                    {/* Photo dropzone */}
-                    <div
-                      onDragOver={(e) => {
-                        e.preventDefault();
-                        setDragOver(true);
-                      }}
-                      onDragLeave={() => setDragOver(false)}
-                      onDrop={handleDrop}
-                      onClick={() => fileInputRef.current?.click()}
-                      className={`cursor-pointer rounded-xl border-2 border-dashed p-6 text-center transition-colors ${
-                        dragOver
-                          ? "border-green bg-green/5"
-                          : "border-warm-gray hover:border-green/50"
-                      }`}
-                    >
-                      <p className="text-2xl">📷</p>
-                      <p className="mt-1 text-sm font-medium text-text">
-                        Drop room photos here
-                      </p>
-                      <p className="mt-0.5 text-xs text-text-faint">
-                        Optional — you can also just describe what you need
-                      </p>
-                      <input
-                        ref={fileInputRef}
-                        type="file"
-                        accept="image/jpeg,image/png,image/webp"
-                        multiple
-                        className="hidden"
-                        onChange={(e) => {
-                          if (e.target.files) addFiles(e.target.files);
-                          e.target.value = "";
-                        }}
-                        disabled={disabled}
-                      />
-                    </div>
-
-                    {/* Photo thumbnails grid */}
-                    {files.length > 0 && (
-                      <div className="grid grid-cols-3 gap-3">
-                        {files.map((f, i) => (
-                          <div
-                            key={i}
-                            className="group relative aspect-square overflow-hidden rounded-lg bg-gray-100"
-                          >
-                            {/* eslint-disable-next-line @next/next/no-img-element */}
-                            <img
-                              src={f.preview}
-                              alt={`Upload ${i + 1}`}
-                              className="h-full w-full object-cover"
-                            />
-                            {/* Uploading overlay */}
-                            {f.uploading && (
-                              <div className="absolute inset-0 flex items-center justify-center bg-black/40">
-                                <Spinner className="h-6 w-6 text-white" />
-                              </div>
-                            )}
-                            {/* Uploaded checkmark */}
-                            {f.path && !f.uploading && (
-                              <span className="absolute bottom-1 right-1 flex h-5 w-5 items-center justify-center rounded-full bg-green text-white">
-                                <svg
-                                  width="12"
-                                  height="12"
-                                  viewBox="0 0 12 12"
-                                  fill="none"
-                                >
-                                  <path
-                                    d="M3 6L5.5 8.5L9 3.5"
-                                    stroke="currentColor"
-                                    strokeWidth="1.5"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                  />
-                                </svg>
-                              </span>
-                            )}
-                            {/* Error indicator */}
-                            {f.error && (
-                              <span className="absolute bottom-1 right-1 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-xs text-white">
-                                !
-                              </span>
-                            )}
-                            {/* Remove button */}
-                            <button
-                              type="button"
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                removeFile(i);
-                              }}
-                              className="absolute right-1 top-1 flex h-5 w-5 items-center justify-center rounded-full bg-black/50 text-xs text-white opacity-0 transition-opacity group-hover:opacity-100"
-                              aria-label="Remove photo"
-                            >
-                              &times;
-                            </button>
-                          </div>
-                        ))}
-                        {/* Add more button */}
-                        {files.length < 5 && (
-                          <button
-                            type="button"
-                            onClick={() => fileInputRef.current?.click()}
-                            className="flex aspect-square items-center justify-center rounded-lg border-2 border-dashed border-warm-gray text-2xl text-text-faint transition-colors hover:border-green/50 hover:text-green"
-                            disabled={disabled}
-                          >
-                            +
-                          </button>
-                        )}
-                      </div>
-                    )}
-
                     {/* Name */}
                     <input
                       type="text"
@@ -394,6 +229,21 @@ export function QuoteForm() {
                       We&rsquo;ll respond within a few hours. No spam, no
                       pressure.
                     </p>
+
+                    {/* WhatsApp alternative */}
+                    <div className="border-t border-warm-gray pt-4 text-center">
+                      <p className="text-xs text-text-faint">
+                        Prefer to send photos?{" "}
+                        <a
+                          href={waUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="font-medium text-green underline underline-offset-2"
+                        >
+                          WhatsApp us directly
+                        </a>
+                      </p>
+                    </div>
                   </form>
                 )}
               </div>
