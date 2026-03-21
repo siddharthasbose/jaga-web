@@ -10,7 +10,7 @@ type FormState = "idle" | "submitting" | "success" | "error";
 const steps = [
   {
     title: "Tell us what you need",
-    desc: "Describe the situation or send photos via WhatsApp",
+    desc: "Describe the situation or email us photos",
   },
   {
     title: "We plan & quote",
@@ -55,10 +55,7 @@ export function QuoteForm() {
   const [message, setMessage] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
 
-  const waNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "";
-  const waUrl = `https://wa.me/${waNumber}?text=${encodeURIComponent(
-    "Hi, I'd like to send photos of my space and get a quote."
-  )}`;
+  const emailUrl = "mailto:hello@jaga.care?subject=Quote request — photos attached";
 
   const disabled = formState === "submitting";
 
@@ -105,7 +102,7 @@ export function QuoteForm() {
                 Send us pictures of your space. We&rsquo;ll handle the rest.
               </h2>
               <p className="mt-4 text-lg leading-relaxed text-text-muted">
-                Fill out the form or send photos directly via WhatsApp — we&rsquo;ll
+                Fill out the form or email us photos directly — we&rsquo;ll
                 come back with a plan and a quote.
               </p>
 
@@ -142,16 +139,14 @@ export function QuoteForm() {
                 {formState === "success" ? (
                   <div className="py-8 text-center">
                     <p className="font-serif text-xl text-text">
-                      We got your request! We&rsquo;ll reach out on WhatsApp
+                      We got your request! We&rsquo;ll reach out
                       within a few hours.
                     </p>
                     <a
-                      href={waUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      href={emailUrl}
                       className="mt-4 inline-block text-sm font-medium text-green underline underline-offset-2 hover:opacity-80"
                     >
-                      Send photos via WhatsApp →
+                      Send photos via email →
                     </a>
                   </div>
                 ) : (
@@ -172,7 +167,7 @@ export function QuoteForm() {
                       <input
                         type="tel"
                         required
-                        placeholder="Phone / WhatsApp number"
+                        placeholder="Phone number"
                         value={phone}
                         onChange={(e) => {
                           setPhone(e.target.value);
@@ -230,17 +225,15 @@ export function QuoteForm() {
                       pressure.
                     </p>
 
-                    {/* WhatsApp alternative */}
+                    {/* Email alternative */}
                     <div className="border-t border-warm-gray pt-4 text-center">
                       <p className="text-xs text-text-faint">
-                        Prefer to send photos?{" "}
+                        Want to send photos?{" "}
                         <a
-                          href={waUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
+                          href={emailUrl}
                           className="font-medium text-green underline underline-offset-2"
                         >
-                          WhatsApp us directly
+                          Email us directly
                         </a>
                       </p>
                     </div>

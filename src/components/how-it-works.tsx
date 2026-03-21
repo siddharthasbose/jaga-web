@@ -2,15 +2,15 @@
 
 import { motion } from "framer-motion";
 import { AnimateIn } from "@/components/animate-in";
-import { WhatsAppButton } from "@/components/whatsapp-button";
+import Link from "next/link";
 
 const steps = [
   {
     number: "01",
     title: "Snap your space",
     description:
-      "Take photos of the rooms that need changes — bathrooms, bedrooms, hallways. Send them to us on WhatsApp and we'll identify what's needed.",
-    detail: "Send via WhatsApp",
+      "Take photos of the rooms that need changes — bathrooms, bedrooms, hallways. Send them to us and we'll identify what's needed.",
+    detail: "Email or form",
     color: "#2D7A6B",
     accent: "#E8F5F1",
   },
@@ -18,7 +18,7 @@ const steps = [
     number: "02",
     title: "Get your proposal",
     description:
-      "Jaga sends a detailed proposal and quote within 48 hours. Not happy with the design or price? Chat with us on WhatsApp to adjust the plan until it's right for you.",
+      "Jaga sends a detailed proposal and quote within 48 hours. Not happy with the design or price? We'll adjust the plan until it's right for you.",
     detail: "Revise until you're happy",
     color: "#1A5F7A",
     accent: "#E3F0F7",
@@ -238,15 +238,15 @@ export function HowItWorks() {
               Ready to get started?
             </h3>
             <p className="mt-3 text-sm text-white/70">
-              Send us photos of your space on WhatsApp. We&rsquo;ll take it from
-              there.
+              Tell us about your situation and we&rsquo;ll take it from there.
             </p>
             <div className="mt-6 flex justify-center">
-              <WhatsAppButton
-                text="Send photos on WhatsApp"
-                prefilledMessage="Hi, I'd like to send photos of my space to get started."
-                variant="filled"
-              />
+              <Link
+                href="/get-a-quote"
+                className="inline-flex items-center rounded-full bg-white px-6 py-3 text-sm font-medium text-[#1A5F7A] transition-all hover:bg-white/90"
+              >
+                Get a free quote →
+              </Link>
             </div>
           </div>
         </AnimateIn>

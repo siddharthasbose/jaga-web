@@ -32,7 +32,7 @@ export async function submitLead(input: LeadInput) {
     console.error("GOOGLE_SHEET_WEBHOOK_URL not configured");
     return {
       success: false,
-      error: "Something went wrong. Please try WhatsApp instead.",
+      error: "Something went wrong. Please email hello@jaga.care instead.",
     };
   }
 
@@ -58,7 +58,7 @@ export async function submitLead(input: LeadInput) {
     console.error("Lead submission error:", err);
     return {
       success: false,
-      error: "Something went wrong. Please try WhatsApp instead.",
+      error: "Something went wrong. Please email hello@jaga.care instead.",
     };
   }
 

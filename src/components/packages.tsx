@@ -162,11 +162,6 @@ function PackageCard({
 }
 
 export function Packages() {
-  const waNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "";
-  const waUrl = `https://wa.me/${waNumber}?text=${encodeURIComponent(
-    "Hi, I need help choosing a care package for my parent."
-  )}`;
-
   return (
     <section id="packages" className="bg-cream py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
@@ -204,16 +199,14 @@ export function Packages() {
               Not sure which level your parent needs?
             </p>
             <p className="mt-1 text-sm text-text-muted">
-              WhatsApp us and we&rsquo;ll help you choose.
+              Email us and we&rsquo;ll help you choose.
             </p>
             <a
-              href={waUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="mailto:hello@jaga.care?subject=Help me choose a package"
               className="mt-4 inline-flex items-center gap-2 rounded-full bg-green px-6 py-2.5 text-sm font-medium text-white transition-opacity hover:opacity-90"
             >
               <MessageCircle className="h-4 w-4" />
-              Chat on WhatsApp
+              Email us
             </a>
           </div>
         </AnimateIn>

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { WhatsAppButton } from "@/components/whatsapp-button";
+import { Mail } from "lucide-react";
 
 const ease = [0.4, 0, 0.2, 1] as const;
 
@@ -57,10 +57,13 @@ export function Hero() {
               >
                 Get a free quote →
               </Link>
-              <WhatsAppButton
-                text="WhatsApp us"
-                prefilledMessage="Hi, I need help setting up my home for my parent coming back from hospital."
-              />
+              <a
+                href="mailto:hello@jaga.care?subject=Home setup enquiry"
+                className="inline-flex items-center gap-2 rounded-full border border-brown/20 px-6 py-3 text-base font-medium text-brown transition-all hover:border-brown/40 hover:bg-warm-gray/50"
+              >
+                <Mail className="h-4 w-4" />
+                Email us
+              </a>
             </motion.div>
 
             <motion.div

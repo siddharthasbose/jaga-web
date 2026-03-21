@@ -85,20 +85,10 @@ export function Footer() {
             <ul className="space-y-3 text-sm">
               <li>
                 <a
-                  href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || ""}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="mailto:hello@jaga.care"
                   className="hover:text-white transition-colors"
                 >
-                  WhatsApp
-                </a>
-              </li>
-              <li>
-                <a
-                  href="mailto:hello@jagacare.com"
-                  className="hover:text-white transition-colors"
-                >
-                  hello@jagacare.com
+                  hello@jaga.care
                 </a>
               </li>
               <li>Malaysia &amp; Singapore</li>
