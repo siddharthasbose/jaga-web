@@ -1,7 +1,5 @@
 "use server";
 
-import { validatePhone } from "./phone";
-
 interface LeadInput {
   name: string;
   phone: string;
@@ -15,13 +13,8 @@ export async function submitLead(input: LeadInput) {
     return { success: false, error: "Please enter your name." };
   }
 
-  const phoneResult = validatePhone(input.phone);
-  if (!phoneResult.valid) {
-    return {
-      success: false,
-      error:
-        "Please enter a valid Malaysian (+60) or Singaporean (+65) phone number.",
-    };
+  if (!input.phone?.trim()) {
+    return { success: false, error: "Please enter your phone number." };
   }
 
   const sheetUrl = process.env.GOOGLE_SHEET_WEBHOOK_URL;
@@ -34,11 +27,10 @@ export async function submitLead(input: LeadInput) {
   }
 
   try {
-    // Use GET with URL params — most reliable with Google Apps Script
     const params = new URLSearchParams({
       name: input.name.trim(),
-      phone: phoneResult.formatted,
-      country: phoneResult.country || "",
+      phone: input.phone.trim(),
+      country: "",
       package_interest: input.packageInterest || "",
       message: input.message?.trim() || "",
       source: input.source || "website",
