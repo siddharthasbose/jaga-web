@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { MessageCircle } from "lucide-react";
 import { AnimateIn } from "@/components/animate-in";
@@ -58,10 +59,10 @@ function PackageCard({
   pkg: CarePackage;
   delay: number;
 }) {
-  const illustrationDescriptions: Record<string, string> = {
-    "make-it-safe": "Parent walking safely at home",
-    "help-them-move": "Family member helping parent move",
-    "someone-by-their-side": "Caregiver sitting with parent",
+  const packageImages: Record<string, { src: string; alt: string }> = {
+    "make-it-safe": { src: "/images/pkg-safe.png", alt: "Accessible bathroom with grab bars and anti-slip mats" },
+    "help-them-move": { src: "/images/pkg-move.png", alt: "Bedroom with hospital bed and wheelchair" },
+    "someone-by-their-side": { src: "/images/pkg-care.png", alt: "Caregiver preparing food for elderly person" },
   };
 
   return (
@@ -89,15 +90,15 @@ function PackageCard({
           }}
         />
 
-        {/* Illustration placeholder */}
-        <div
-          className="flex flex-col items-center justify-center px-6 py-8"
-          style={{ backgroundColor: pkg.accent }}
-        >
-          <span className="text-4xl">{pkg.icon}</span>
-          <p className="mt-2 text-center text-xs text-text-muted">
-            Warm illustration: {illustrationDescriptions[pkg.slug]}
-          </p>
+        {/* Package image */}
+        <div className="relative aspect-[16/10] w-full overflow-hidden">
+          <Image
+            src={packageImages[pkg.slug].src}
+            alt={packageImages[pkg.slug].alt}
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, 33vw"
+          />
         </div>
 
         {/* Body */}
@@ -172,12 +173,12 @@ export function Packages() {
         {/* Header */}
         <AnimateIn className="mx-auto max-w-2xl text-center">
           <p className="text-sm font-semibold uppercase tracking-widest text-green">
-            Choose what they need
+            Our packages
           </p>
           <h2 className="mt-4 font-serif text-3xl leading-snug tracking-tight text-text sm:text-4xl lg:text-5xl">
-            Three levels of care.
+            3 simple packages.
             <br />
-            One less thing to worry about.
+            One less thing to care about.
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-text-muted">
             Not sure what your parent needs? Start with safety essentials and add

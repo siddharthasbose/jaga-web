@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { JagaLogo } from "@/components/jaga-logo";
 
 export function Footer() {
   return (
@@ -7,8 +8,8 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8">
           {/* Brand */}
           <div className="md:col-span-1">
-            <Link href="/" className="font-serif text-2xl text-white">
-              jaga<span className="text-green">.</span>
+            <Link href="/">
+              <JagaLogo variant="light" />
             </Link>
             <p className="mt-4 text-sm leading-relaxed">
               Home ready before they are. Serving families in Malaysia and

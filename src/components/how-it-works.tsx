@@ -19,7 +19,7 @@ const steps = [
     title: "Get your proposal",
     description:
       "Jaga sends a detailed proposal and quote within 48 hours. Not happy with the design or price? Chat with us on WhatsApp to adjust the plan until it's right for you.",
-    detail: "Fully flexible — revise until you're happy",
+    detail: "Revise until you're happy",
     color: "#1A5F7A",
     accent: "#E3F0F7",
   },
@@ -132,78 +132,68 @@ export function HowItWorks() {
             How it works
           </p>
           <h2 className="mt-4 font-serif text-3xl leading-snug tracking-tight text-text sm:text-4xl lg:text-5xl">
-            From photos to a safe home. Four steps. One week.
+            From photos to an equipped home in one week.
           </h2>
           <p className="mt-4 max-w-xl text-lg text-text-muted">
             You focus on your parent. We handle everything else.
           </p>
         </AnimateIn>
 
-        {/* Step cards */}
-        <div className="mt-16 flex flex-col items-center gap-5 md:flex-row md:justify-center">
+        {/* Step cards — grid for equal heights */}
+        <div className="mt-16 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((step, i) => {
             const Icon = stepIcons[i];
             return (
-              <div key={step.number} className="flex flex-col items-center gap-5 md:flex-row">
-                <AnimateIn delay={i * 0.1}>
-                  <motion.div
-                    whileHover={{ y: -4, boxShadow: "0 12px 32px rgba(0,0,0,0.08)" }}
-                    transition={{ duration: 0.2 }}
-                    className="w-full max-w-xs rounded-xl border border-warm-gray bg-white p-6 transition-shadow"
-                  >
-                    {/* Top row: number + icon */}
-                    <div className="flex items-start justify-between">
-                      <span
-                        className="font-serif text-3xl opacity-20"
-                        style={{ color: step.color }}
-                      >
-                        {step.number}
-                      </span>
-                      <div
-                        className="flex h-12 w-12 items-center justify-center rounded-xl"
-                        style={{ backgroundColor: step.accent }}
-                      >
-                        <Icon color={step.color} />
-                      </div>
+              <AnimateIn key={step.number} delay={i * 0.1} className="flex">
+                <motion.div
+                  whileHover={{ y: -4, boxShadow: "0 12px 32px rgba(0,0,0,0.08)" }}
+                  transition={{ duration: 0.2 }}
+                  className="flex w-full flex-col rounded-xl border border-warm-gray bg-white p-6 transition-shadow"
+                >
+                  {/* Top row: number + icon */}
+                  <div className="flex items-start justify-between">
+                    <span
+                      className="font-serif text-3xl opacity-20"
+                      style={{ color: step.color }}
+                    >
+                      {step.number}
+                    </span>
+                    <div
+                      className="flex h-12 w-12 items-center justify-center rounded-xl"
+                      style={{ backgroundColor: step.accent }}
+                    >
+                      <Icon color={step.color} />
                     </div>
-
-                    {/* Title */}
-                    <h3 className="mt-4 font-serif text-xl text-text">
-                      {step.title}
-                    </h3>
-
-                    {/* Description */}
-                    <p className="mt-2 text-sm leading-relaxed text-text-muted">
-                      {step.description}
-                    </p>
-
-                    {/* Detail pill */}
-                    <div className="mt-4">
-                      <span
-                        className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium"
-                        style={{
-                          backgroundColor: step.accent,
-                          color: step.color,
-                        }}
-                      >
-                        <span
-                          className="h-1.5 w-1.5 rounded-full"
-                          style={{ backgroundColor: step.color }}
-                        />
-                        {step.detail}
-                      </span>
-                    </div>
-                  </motion.div>
-                </AnimateIn>
-
-                {/* Connector: right chevron on desktop, down chevron on mobile */}
-                {i < steps.length - 1 && (
-                  <div className="flex items-center justify-center">
-                    <ChevronRight />
-                    <ChevronDown />
                   </div>
-                )}
-              </div>
+
+                  {/* Title */}
+                  <h3 className="mt-4 font-serif text-xl text-text">
+                    {step.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="mt-2 flex-1 text-sm leading-relaxed text-text-muted">
+                    {step.description}
+                  </p>
+
+                  {/* Detail pill */}
+                  <div className="mt-4">
+                    <span
+                      className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium"
+                      style={{
+                        backgroundColor: step.accent,
+                        color: step.color,
+                      }}
+                    >
+                      <span
+                        className="h-1.5 w-1.5 rounded-full"
+                        style={{ backgroundColor: step.color }}
+                      />
+                      {step.detail}
+                    </span>
+                  </div>
+                </motion.div>
+              </AnimateIn>
             );
           })}
         </div>

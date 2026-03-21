@@ -19,8 +19,12 @@ const dmSans = DM_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: "Jaga Care — Home Ready Before They Are",
-    template: "%s | Jaga Care",
+    default: "Jaga.Care — Home Ready Before They Are",
+    template: "%s | Jaga.Care",
+  },
+  icons: {
+    icon: "/favicon.png",
+    apple: "/favicon.png",
   },
   description:
     "We set up grab bars, hospital beds, and safety equipment so your parent's home is ready before hospital discharge. Serving Malaysia and Singapore.",
@@ -79,7 +83,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <Nav />
-        <main id="main-content" className="flex-1 pt-[72px]">
+        <main id="main-content" className="flex-1 pt-[80px]">
           {children}
         </main>
         <Footer />
