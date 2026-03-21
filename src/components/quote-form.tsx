@@ -140,7 +140,7 @@ export function QuoteForm() {
                 Get started
               </p>
               <h2 className="mt-4 font-serif text-3xl leading-snug tracking-tight text-text sm:text-4xl lg:text-5xl">
-                Send us your space. We&rsquo;ll handle the rest.
+                Send us pictures of your space. We&rsquo;ll handle the rest.
               </h2>
               <p className="mt-4 text-lg leading-relaxed text-text-muted">
                 Snap a few photos of the rooms that need work — or just describe
