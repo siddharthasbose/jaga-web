@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { Hero } from "@/components/hero";
 import { HowItWorks } from "@/components/how-it-works";
 import { Packages } from "@/components/packages";
@@ -9,7 +10,9 @@ export default function Home() {
       <Hero />
       <HowItWorks />
       <Packages />
-      <QuoteForm />
+      <Suspense>
+        <QuoteForm />
+      </Suspense>
     </>
   );
 }

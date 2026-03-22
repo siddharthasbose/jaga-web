@@ -203,12 +203,15 @@ export function HowItWorks() {
           <div className="mx-auto max-w-3xl">
             <div className="relative flex items-center justify-between">
               {/* Gradient line */}
-              <div
+              <motion.div
                 className="absolute left-0 right-0 top-1/2 h-0.5 -translate-y-1/2"
                 style={{
                   background:
-                    "linear-gradient(to right, #2D7A6B, #1A5F7A, #C27A2A, #6B4C8A)",
+                    "linear-gradient(90deg, #2D7A6B, #1A5F7A, #C27A2A, #6B4C8A, #2D7A6B, #1A5F7A)",
+                  backgroundSize: "200% 100%"
                 }}
+                animate={{ backgroundPosition: ["0% 50%", "-100% 50%"] }}
+                transition={{ duration: 8, ease: "linear", repeat: Infinity }}
               />
 
               {steps.map((step, i) => (

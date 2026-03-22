@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { MessageCircle } from "lucide-react";
 import { AnimateIn } from "@/components/animate-in";
@@ -68,9 +69,9 @@ function PackageCard({
   return (
     <AnimateIn delay={delay}>
       <motion.div
-        whileHover={{ y: -8 }}
+        whileHover={{ y: -8, boxShadow: "0 20px 40px -10px rgba(0,0,0,0.08)" }}
         transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-        className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm hover:shadow-lg"
+        className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/60 bg-white/70 backdrop-blur-2xl shadow-sm hover:shadow-xl transition-all"
       >
         {/* Popular badge */}
         {pkg.popular && (
@@ -136,19 +137,21 @@ function PackageCard({
           <div className="mt-auto pt-6">
             {/* CTA Button */}
             {pkg.popular ? (
-              <button
-                className="w-full rounded-full px-6 py-2.5 text-sm font-medium text-white transition-opacity hover:opacity-90"
+              <Link
+                href={`/get-a-quote?package=${pkg.slug}`}
+                className="block w-full rounded-full px-6 py-2.5 text-center text-sm font-medium text-white transition-opacity hover:opacity-90"
                 style={{ backgroundColor: pkg.color }}
               >
                 {pkg.cta}
-              </button>
+              </Link>
             ) : (
-              <button
-                className="w-full rounded-full border px-6 py-2.5 text-sm font-medium transition-opacity hover:opacity-80"
+              <Link
+                href={`/get-a-quote?package=${pkg.slug}`}
+                className="block w-full rounded-full border px-6 py-2.5 text-center text-sm font-medium transition-opacity hover:opacity-80"
                 style={{ borderColor: pkg.color, color: pkg.color }}
               >
                 {pkg.cta}
-              </button>
+              </Link>
             )}
 
             <p className="mt-3 text-center text-xs text-text-muted">
@@ -162,9 +165,36 @@ function PackageCard({
 }
 
 export function Packages() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "itemListElement": packages.map((pkg, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "item": {
+        "@type": "Service",
+        "name": pkg.name,
+        "description": pkg.tagline,
+        "provider": {
+          "@type": "LocalBusiness",
+          "name": "Jaga Care"
+        },
+        "areaServed": ["Malaysia", "Singapore"]
+      }
+    }))
+  };
+
   return (
-    <section id="packages" className="bg-cream py-20 sm:py-28">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <section id="packages" className="relative overflow-hidden bg-cream py-20 sm:py-28">
+      {/* Decorative background blobs for glassmorphism depth */}
+      <div className="absolute top-1/3 -left-32 w-[30rem] h-[30rem] bg-green/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-1/4 -right-32 w-[30rem] h-[30rem] bg-brown/10 rounded-full blur-[120px] pointer-events-none" />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <AnimateIn className="mx-auto max-w-2xl text-center">
           <p className="text-sm font-semibold uppercase tracking-widest text-green">
@@ -201,13 +231,15 @@ export function Packages() {
             <p className="mt-1 text-sm text-text-muted">
               Email us and we&rsquo;ll help you choose.
             </p>
-            <a
-              href="mailto:hello@jaga.care?subject=Help me choose a package"
-              className="mt-4 inline-flex items-center gap-2 rounded-full bg-green px-6 py-2.5 text-sm font-medium text-white transition-opacity hover:opacity-90"
-            >
-              <MessageCircle className="h-4 w-4" />
-              Email us
-            </a>
+            <div className="mt-4 flex justify-center">
+              <a
+                href="mailto:hello@jaga.care?subject=Help me choose a package"
+                className="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white/50 px-6 py-2.5 text-sm font-medium text-text transition-all hover:bg-white hover:shadow-md"
+              >
+                <MessageCircle className="h-4 w-4" />
+                Email us
+              </a>
+            </div>
           </div>
         </AnimateIn>
       </div>

@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { Suspense } from "react";
 import { QuoteForm } from "@/components/quote-form";
 
 export const metadata: Metadata = {
@@ -9,7 +10,9 @@ export const metadata: Metadata = {
 export default function GetAQuotePage() {
   return (
     <main id="main-content">
-      <QuoteForm />
+      <Suspense>
+        <QuoteForm />
+      </Suspense>
     </main>
   );
 }

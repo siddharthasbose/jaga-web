@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import { Mail } from "lucide-react";
 
 const ease = [0.4, 0, 0.2, 1] as const;
@@ -14,8 +15,15 @@ const stagger = (i: number) => ({
 });
 
 export function Hero() {
+  const containerRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"],
+  });
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
+
   return (
-    <section className="bg-cream">
+    <section ref={containerRef} className="bg-cream overflow-hidden">
       <div className="mx-auto max-w-7xl px-6 py-16 md:py-24 lg:px-8">
         <div className="grid items-center gap-12 md:grid-cols-2 md:gap-16">
           {/* Left — text */}
@@ -92,7 +100,7 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.2, ease: [0.4, 0, 0.2, 1] }}
             className="relative mx-auto w-full max-w-md md:max-w-none"
           >
-            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl">
+            <motion.div style={{ y }} className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl shadow-[0_20px_60px_-15px_rgba(45,122,107,0.3)] border border-white/50">
               <Image
                 src="/images/hero-portrait.png"
                 alt="Caregiver helping elderly person at home"
@@ -101,7 +109,7 @@ export function Hero() {
                 priority
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </div>

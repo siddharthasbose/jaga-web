@@ -1,9 +1,11 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useState, useEffect, type FormEvent } from "react";
+import { useSearchParams } from "next/navigation";
 import { AnimateIn } from "@/components/animate-in";
 import { submitLead } from "@/lib/actions";
 import { trackEvent } from "@/lib/analytics";
+import { packages } from "@/lib/packages-data";
 
 type FormState = "idle" | "submitting" | "success" | "error";
 
@@ -48,12 +50,23 @@ function Spinner({ className = "h-4 w-4" }: { className?: string }) {
 }
 
 export function QuoteForm() {
+  const searchParams = useSearchParams();
   const [formState, setFormState] = useState<FormState>("idle");
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [phoneError, setPhoneError] = useState("");
   const [message, setMessage] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
+  const [selectedPackage, setSelectedPackage] = useState("");
+
+  // Pre-select package from URL params (e.g., /get-a-quote?package=make-it-safe)
+  useEffect(() => {
+    const pkg = searchParams.get("package");
+    if (pkg) {
+      const found = packages.find((p) => p.slug === pkg);
+      if (found) setSelectedPackage(found.name);
+    }
+  }, [searchParams]);
 
   const emailUrl = "mailto:hello@jaga.care?subject=Quote request — photos attached";
 
@@ -75,6 +88,7 @@ export function QuoteForm() {
       name,
       phone,
       message: message || undefined,
+      packageInterest: selectedPackage || undefined,
       source: "website_quote_form",
     });
 
@@ -186,6 +200,19 @@ export function QuoteForm() {
                         </p>
                       )}
                     </div>
+
+                    {/* Package selector */}
+                    <select
+                      value={selectedPackage}
+                      onChange={(e) => setSelectedPackage(e.target.value)}
+                      disabled={disabled}
+                      className="rounded-lg border border-warm-gray px-4 py-2.5 text-sm text-text bg-white focus:border-green focus:outline-none focus:ring-1 focus:ring-green disabled:opacity-50"
+                    >
+                      <option value="">Which package interests you? (optional)</option>
+                      {packages.map((pkg) => (
+                        <option key={pkg.slug} value={pkg.name}>{pkg.name}</option>
+                      ))}
+                    </select>
 
                     {/* Situation */}
                     <textarea
