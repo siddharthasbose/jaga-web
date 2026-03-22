@@ -111,11 +111,25 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_SG",
-    url: process.env.NEXT_PUBLIC_SITE_URL,
-    siteName: "Jaga Care",
-    title: "Jaga Care — Home Ready Before They Are",
+    url: "https://jaga.care",
+    siteName: "Jaga.Care",
+    title: "Jaga.Care — Home Ready Before They Are",
     description:
       "Home safety setup for aging parents. Serving Malaysia & Singapore.",
+    images: [
+      {
+        url: "https://jaga.care/images/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Jaga.Care — Home Ready Before They Are",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Jaga.Care — Home Ready Before They Are",
+    description: "Home safety setup for aging parents. Serving Malaysia & Singapore.",
+    images: ["https://jaga.care/images/og-image.png"],
   },
 };
 
