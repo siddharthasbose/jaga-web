@@ -39,5 +39,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       priority: 0.7,
     },
+    {
+      url: `${baseUrl}/ms`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/ms/dapatkan-sebutharga`,
+      lastModified: new Date(),
+      priority: 0.8,
+    },
   ];
 }
