@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { AnimateIn } from "@/components/animate-in";
 import Link from "next/link";
+import { useState } from "react";
 
 const steps = [
   {
@@ -86,46 +87,16 @@ function HomeCheckIcon({ color }: { color: string }) {
 
 const stepIcons = [CameraIcon, ClipboardCheckIcon, CalendarIcon, HomeCheckIcon];
 
-function ChevronRight() {
-  return (
-    <svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className="text-text-faint hidden md:block flex-shrink-0"
-    >
-      <polyline points="9 18 15 12 9 6" />
-    </svg>
-  );
-}
-
-function ChevronDown() {
-  return (
-    <svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className="text-text-faint md:hidden flex-shrink-0"
-    >
-      <polyline points="6 9 12 15 18 9" />
-    </svg>
-  );
-}
-
 export function HowItWorks() {
+  const [hoveredStep, setHoveredStep] = useState<number | null>(null);
+
   return (
-    <section id="how-it-works" className="py-20 sm:py-28 bg-cream">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section id="how-it-works" className="py-20 sm:py-28 bg-cream relative overflow-hidden">
+      {/* Decorative background blobs for glassmorphism */}
+      <div className="absolute top-1/2 -left-20 w-[40rem] h-[40rem] bg-green/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-0 -right-20 w-[40rem] h-[40rem] bg-brown/5 rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <AnimateIn className="flex flex-col items-center text-center">
           <p className="text-xs font-semibold uppercase tracking-wider text-green">
@@ -143,27 +114,35 @@ export function HowItWorks() {
         <div className="mt-16 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((step, i) => {
             const Icon = stepIcons[i];
+            const isHovered = hoveredStep === i;
+
             return (
               <AnimateIn key={step.number} delay={i * 0.1} className="flex">
                 <motion.div
-                  whileHover={{ y: -4, boxShadow: "0 12px 32px rgba(0,0,0,0.08)" }}
-                  transition={{ duration: 0.2 }}
-                  className="flex w-full flex-col rounded-xl border border-warm-gray bg-white p-6 transition-shadow"
+                  onMouseEnter={() => setHoveredStep(i)}
+                  onMouseLeave={() => setHoveredStep(null)}
+                  whileHover={{ y: -8, boxShadow: `0 24px 48px -12px ${step.color}30` }}
+                  transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+                  className="flex w-full flex-col rounded-2xl border border-white/60 bg-white/70 backdrop-blur-2xl p-6 transition-all"
                 >
                   {/* Top row: number + icon */}
                   <div className="flex items-start justify-between">
-                    <span
-                      className="font-serif text-3xl opacity-20"
+                    <motion.span
+                      animate={{ y: isHovered ? -4 : 0, opacity: isHovered ? 0.3 : 0.2 }}
+                      transition={{ duration: 0.3 }}
+                      className="font-serif text-3xl transition-colors"
                       style={{ color: step.color }}
                     >
                       {step.number}
-                    </span>
-                    <div
-                      className="flex h-12 w-12 items-center justify-center rounded-xl"
+                    </motion.span>
+                    <motion.div
+                      animate={{ y: isHovered ? -4 : 0 }}
+                      transition={{ type: "spring", stiffness: 300, damping: 15 }}
+                      className="flex h-12 w-12 items-center justify-center rounded-xl shadow-sm border border-white/40"
                       style={{ backgroundColor: step.accent }}
                     >
                       <Icon color={step.color} />
-                    </div>
+                    </motion.div>
                   </div>
 
                   {/* Title */}
@@ -179,13 +158,12 @@ export function HowItWorks() {
                   {/* Detail pill */}
                   <div className="mt-4">
                     <span
-                      className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium"
-                      style={{
-                        backgroundColor: step.accent,
-                        color: step.color,
-                      }}
+                      className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium bg-white/50 border border-white/50 shadow-sm transition-colors"
+                      style={{ color: step.color }}
                     >
-                      <span
+                      <motion.span
+                        animate={{ scale: isHovered ? [1, 1.5, 1] : 1 }}
+                        transition={{ repeat: isHovered ? Infinity : 0, duration: 2 }}
                         className="h-1.5 w-1.5 rounded-full"
                         style={{ backgroundColor: step.color }}
                       />
@@ -204,7 +182,7 @@ export function HowItWorks() {
             <div className="relative flex items-center justify-between">
               {/* Gradient line */}
               <motion.div
-                className="absolute left-0 right-0 top-1/2 h-0.5 -translate-y-1/2"
+                className="absolute left-0 right-0 top-1/2 h-0.5 -translate-y-1/2 overflow-hidden rounded-full"
                 style={{
                   background:
                     "linear-gradient(90deg, #2D7A6B, #1A5F7A, #C27A2A, #6B4C8A, #2D7A6B, #1A5F7A)",
@@ -214,39 +192,53 @@ export function HowItWorks() {
                 transition={{ duration: 8, ease: "linear", repeat: Infinity }}
               />
 
-              {steps.map((step, i) => (
-                <div key={step.number} className="relative flex flex-col items-center">
-                  {/* Dot */}
-                  <div
-                    className="relative z-10 h-4 w-4 rounded-full border-2 border-white"
-                    style={{ backgroundColor: step.color }}
-                  />
-                  {/* Label */}
-                  <span
-                    className="mt-2 text-xs font-medium"
-                    style={{ color: step.color }}
-                  >
-                    {timelineLabels[i]}
-                  </span>
-                </div>
-              ))}
+              {steps.map((step, i) => {
+                const isHovered = hoveredStep === i;
+                return (
+                  <div key={step.number} className="relative flex flex-col items-center">
+                    {/* Dot */}
+                    <div className="relative cursor-pointer py-4" onMouseEnter={() => setHoveredStep(i)} onMouseLeave={() => setHoveredStep(null)}>
+                      <motion.div
+                        animate={{
+                          scale: isHovered ? 1.5 : 1,
+                          boxShadow: isHovered ? `0 0 20px ${step.color}80` : `0 0 0px transparent`
+                        }}
+                        className="relative z-10 h-4 w-4 rounded-full border-2 border-white"
+                        style={{ backgroundColor: step.color }}
+                      />
+                    </div>
+                    {/* Label */}
+                    <motion.span
+                      animate={{
+                        fontWeight: isHovered ? 700 : 500,
+                        opacity: isHovered ? 1 : 0.8
+                      }}
+                      className="mt-1 text-xs transition-colors"
+                      style={{ color: step.color }}
+                    >
+                      {timelineLabels[i]}
+                    </motion.span>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </AnimateIn>
 
         {/* Bottom CTA */}
         <AnimateIn delay={0.5} className="mt-16 flex justify-center">
-          <div className="w-full max-w-md rounded-2xl bg-[#1A5F7A] px-8 py-10 text-center">
-            <h3 className="font-serif text-2xl text-white">
+          <div className="w-full max-w-md rounded-3xl bg-[#1A5F7A] px-8 py-10 text-center shadow-xl border border-white/10 relative overflow-hidden">
+            <div className="absolute -top-24 -right-24 w-48 h-48 bg-white/10 rounded-full blur-2xl pointer-events-none" />
+            <h3 className="relative z-10 font-serif text-2xl text-white">
               Ready to get started?
             </h3>
-            <p className="mt-3 text-sm text-white/70">
+            <p className="relative z-10 mt-3 text-sm text-white/80">
               Tell us about your situation and we&rsquo;ll take it from there.
             </p>
-            <div className="mt-6 flex justify-center">
+            <div className="relative z-10 mt-6 flex justify-center">
               <Link
                 href="/get-a-quote"
-                className="inline-flex items-center rounded-full bg-white px-6 py-3 text-sm font-medium text-[#1A5F7A] transition-all hover:bg-white/90"
+                className="inline-flex items-center rounded-full bg-white px-6 py-3 text-sm font-medium text-[#1A5F7A] transition-all hover:bg-white/90 hover:shadow-lg hover:-translate-y-1"
               >
                 Get a free quote →
               </Link>
