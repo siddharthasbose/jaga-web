@@ -52,6 +52,12 @@ export function Nav() {
             <Link href="/get-a-quote" className="hover:text-text transition-colors">
               Get a quote
             </Link>
+            {/* Language switcher */}
+            <span className="text-text-faint text-xs border border-brown/15 rounded-full px-3 py-1">
+              <Link href="/" className="hover:text-text transition-colors">EN</Link>
+              {" | "}
+              <Link href="/ms" className="hover:text-text transition-colors">BM</Link>
+            </span>
             <Link
               href="/get-a-quote"
               className="bg-green hover:bg-green-dark text-white rounded-full px-6 py-2.5 text-sm font-medium transition-all hover:shadow-lg hover:shadow-green/20 ml-2"
@@ -103,6 +109,12 @@ export function Nav() {
               >
                 Get help now
               </Link>
+              {/* Language switcher */}
+              <div className="mt-4 flex gap-4 text-base font-sans text-text-muted">
+                <Link href="/" onClick={closeMenu} className="hover:text-text transition-colors">English</Link>
+                <span className="text-text-faint">|</span>
+                <Link href="/ms" onClick={closeMenu} className="hover:text-text transition-colors">Bahasa Melayu</Link>
+              </div>
             </motion.div>
           </motion.div>
         )}
