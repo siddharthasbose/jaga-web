@@ -643,12 +643,48 @@ function PackagesMs() {
 /*  Page                                                               */
 /* ------------------------------------------------------------------ */
 
+function QuoteCta() {
+  return (
+    <section className="bg-cream py-20 sm:py-28">
+      <div className="mx-auto max-w-3xl px-6 text-center">
+        <AnimateIn>
+          <p className="text-sm font-semibold uppercase tracking-widest text-green">
+            Mula sekarang
+          </p>
+          <h2 className="mt-4 font-serif text-3xl leading-snug tracking-tight text-text sm:text-4xl lg:text-5xl">
+            Hantar gambar ruangan anda. Kami uruskan yang lain.
+          </h2>
+          <p className="mt-4 text-lg leading-relaxed text-text-muted">
+            Isi borang ringkas dan kami akan kembali dengan pelan dan sebut harga dalam 48 jam.
+          </p>
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+            <Link
+              href="/ms/dapatkan-sebutharga"
+              className="inline-flex items-center rounded-full bg-green px-8 py-3.5 text-base font-medium text-white transition-all hover:bg-green-dark hover:shadow-lg hover:shadow-green/20"
+            >
+              Dapatkan sebut harga percuma →
+            </Link>
+            <a
+              href="mailto:hello@jaga.care?subject=Pertanyaan persediaan rumah"
+              className="inline-flex items-center gap-2 rounded-full border border-brown/20 px-6 py-3 text-base font-medium text-brown transition-all hover:border-brown/40 hover:bg-warm-gray/50"
+            >
+              <Mail className="h-4 w-4" />
+              Emel kami
+            </a>
+          </div>
+        </AnimateIn>
+      </div>
+    </section>
+  );
+}
+
 export default function MsHomePage() {
   return (
     <>
       <HeroMs />
       <HowItWorksMs />
       <PackagesMs />
+      <QuoteCta />
     </>
   );
 }
