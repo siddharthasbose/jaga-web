@@ -7,7 +7,7 @@ export function JagaLogo({ variant = "dark" }: { variant?: "dark" | "light" }) {
       alt="Jaga.Care"
       width={906}
       height={586}
-      className={`h-16 w-auto ${variant === "light" ? "brightness-0 invert" : ""}`}
+      className={`h-10 md:h-14 w-auto ${variant === "light" ? "brightness-0 invert" : ""}`}
       priority
     />
   );

@@ -136,14 +136,45 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  name: "Jaga Care",
+  name: "Jaga.Care",
   description: "Home safety setup and care coordination for aging parents",
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://jaga.care",
+  url: "https://jaga.care",
+  email: "hello@jaga.care",
   areaServed: [
     { "@type": "Country", name: "Malaysia" },
     { "@type": "Country", name: "Singapore" },
   ],
   serviceType: "Home Healthcare Setup",
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Care Packages",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Make it safe",
+          description: "Fall prevention and home safety — grab bars, anti-slip mats, cameras, accessible bed setup. For parents who are mostly independent but at risk.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Help them move",
+          description: "Full mobility equipment — hospital bed, wheelchair, grab bars, and anti-slip mats. For parents with significantly reduced mobility after stroke or surgery.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Someone by their side",
+          description: "Complete care with dedicated caregiver — all safety equipment plus daily hands-on support for parents recovering from major surgery or with cognitive decline.",
+        },
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
@@ -168,7 +199,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <Nav />
-        <main id="main-content" className="flex-1 pt-[80px]">
+        <main id="main-content" className="flex-1 pt-[72px] md:pt-[80px]">
           {children}
         </main>
         <Footer />
