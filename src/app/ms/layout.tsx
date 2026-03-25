@@ -29,6 +29,13 @@ export const metadata: Metadata = {
     "grab bars installation Malaysia",
     "hospital bed rental Malaysia",
   ],
+  alternates: {
+    canonical: "https://jaga.care/ms",
+    languages: {
+      en: "https://jaga.care",
+      ms: "https://jaga.care/ms",
+    },
+  },
   openGraph: {
     type: "website",
     locale: "ms_MY",

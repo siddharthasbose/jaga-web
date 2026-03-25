@@ -108,6 +108,13 @@ export const metadata: Metadata = {
     "home recovery after hospital",
     "prepare home for elderly parent",
   ],
+  alternates: {
+    canonical: "https://jaga.care",
+    languages: {
+      en: "https://jaga.care",
+      ms: "https://jaga.care/ms",
+    },
+  },
   openGraph: {
     type: "website",
     locale: "en_SG",
