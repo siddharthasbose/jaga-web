@@ -234,6 +234,25 @@ export default function SomeoneByTheirSidePage() {
         </div>
       </section>
 
+      {/* Related guides */}
+      <section className="py-16 px-6 md:px-12">
+        <div className="max-w-3xl mx-auto">
+          <AnimateIn>
+            <p className="text-sm font-semibold uppercase tracking-wider text-text-muted mb-4">Related guides</p>
+            <div className="space-y-3">
+              <Link href="/guides/prepare-home-after-stroke" className="block p-4 bg-white rounded-xl border border-warm-gray/50 hover:border-green/30 transition-colors">
+                <p className="font-medium text-text">Preparing Your Home After Stroke</p>
+                <p className="text-sm text-text-muted mt-1">What to modify, what to rent, and what to do before your parent comes home. Based on published medical research.</p>
+              </Link>
+              <Link href="/guides/grab-bar-installation-malaysia" className="block p-4 bg-white rounded-xl border border-warm-gray/50 hover:border-green/30 transition-colors">
+                <p className="font-medium text-text">Grab Bar Installation in Malaysia</p>
+                <p className="text-sm text-text-muted mt-1">Where to place them, what materials to use, and why mounting matters more than the bar itself.</p>
+              </Link>
+            </div>
+          </AnimateIn>
+        </div>
+      </section>
+
       {/* Other packages */}
       <section className="py-16 px-6 md:px-12 bg-warm-gray/30">
         <div className="max-w-3xl mx-auto text-center">

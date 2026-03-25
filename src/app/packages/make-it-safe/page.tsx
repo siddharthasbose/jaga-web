@@ -214,6 +214,25 @@ export default function MakeItSafePage() {
         </div>
       </section>
 
+      {/* Related guides */}
+      <section className="py-16 px-6 md:px-12">
+        <div className="max-w-3xl mx-auto">
+          <AnimateIn>
+            <p className="text-sm font-semibold uppercase tracking-wider text-text-muted mb-4">Related guides</p>
+            <div className="space-y-3">
+              <Link href="/guides/grab-bar-installation-malaysia" className="block p-4 bg-white rounded-xl border border-warm-gray/50 hover:border-green/30 transition-colors">
+                <p className="font-medium text-text">Grab Bar Installation in Malaysia</p>
+                <p className="text-sm text-text-muted mt-1">Where to place them, what materials to use, and why mounting matters more than the bar itself.</p>
+              </Link>
+              <Link href="/guides/hospital-discharge-checklist" className="block p-4 bg-white rounded-xl border border-warm-gray/50 hover:border-green/30 transition-colors">
+                <p className="font-medium text-text">Hospital Discharge Checklist</p>
+                <p className="text-sm text-text-muted mt-1">What to prepare at home before your parent leaves hospital.</p>
+              </Link>
+            </div>
+          </AnimateIn>
+        </div>
+      </section>
+
       {/* Other packages */}
       <section className="py-16 px-6 md:px-12 bg-warm-gray/30">
         <div className="max-w-3xl mx-auto text-center">

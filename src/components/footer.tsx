@@ -5,7 +5,7 @@ export function Footer() {
   return (
     <footer className="bg-dark text-white/70">
       <div className="max-w-7xl mx-auto px-6 md:px-12 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-12 md:gap-8">
           {/* Brand */}
           <div className="md:col-span-1">
             <Link href="/">
@@ -74,6 +74,37 @@ export function Footer() {
                   className="hover:text-white transition-colors"
                 >
                   Get a quote
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Guides */}
+          <div>
+            <h4 className="text-white text-sm font-medium mb-4">Guides</h4>
+            <ul className="space-y-3 text-sm">
+              <li>
+                <Link
+                  href="/guides/prepare-home-after-stroke"
+                  className="hover:text-white transition-colors"
+                >
+                  Home setup after stroke
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/guides/hospital-discharge-checklist"
+                  className="hover:text-white transition-colors"
+                >
+                  Hospital discharge checklist
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/guides/grab-bar-installation-malaysia"
+                  className="hover:text-white transition-colors"
+                >
+                  Grab bar installation
                 </Link>
               </li>
             </ul>
