@@ -408,6 +408,7 @@ const packagesMs: CarePackageMs[] = [
     features: [
       { text: "Palang pegangan bilik mandi", included: true },
       { text: "Alas anti-gelincir", included: true },
+      { text: "Kerusi mandi", included: true },
       { text: "Kamera di kawasan umum", included: true },
       { text: "Katil rendah / mudah diakses", included: true },
       { text: "Katil hospital", included: false },
@@ -427,6 +428,7 @@ const packagesMs: CarePackageMs[] = [
     features: [
       { text: "Palang pegangan bilik mandi", included: true },
       { text: "Alas anti-gelincir", included: true },
+      { text: "Kerusi mandi", included: true },
       { text: "Kamera di kawasan umum", included: true },
       { text: "Katil rendah / mudah diakses", included: true },
       { text: "Katil hospital", included: true },
@@ -445,6 +447,7 @@ const packagesMs: CarePackageMs[] = [
     features: [
       { text: "Palang pegangan bilik mandi", included: true },
       { text: "Alas anti-gelincir", included: true },
+      { text: "Kerusi mandi", included: true },
       { text: "Kamera di kawasan umum", included: true },
       { text: "Katil rendah / mudah diakses", included: true },
       { text: "Katil hospital", included: true },

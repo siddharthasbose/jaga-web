@@ -34,6 +34,10 @@ const featureDetails = [
     description: "Medical-grade anti-slip mats custom-fitted to your bathroom. Critical when a caregiver is assisting with bathing — wet floors are dangerous for both your parent and their caregiver.",
   },
   {
+    title: "Shower chair",
+    description: "A sturdy, height-adjustable shower chair your caregiver uses during assisted bathing. Reduces strain on the caregiver and gives your parent a stable, dignified bathing experience.",
+  },
+  {
     title: "Cameras in common areas",
     description: "Safety cameras in living areas and hallways with phone alerts. Gives you visibility into your parent's daily routine and peace of mind when the caregiver is in another room. Bedrooms and bathrooms are never monitored.",
   },

@@ -34,6 +34,10 @@ const featureDetails = [
     description: "Medical-grade anti-slip mats custom-fitted to your bathroom floor. Essential when your parent is transferring between a wheelchair and the shower or toilet.",
   },
   {
+    title: "Shower chair",
+    description: "A sturdy, height-adjustable shower chair with non-slip rubber feet. For parents with reduced mobility, bathing seated removes the highest-risk fall scenario in the home. Sized and fitted based on your parent's weight and transfer needs.",
+  },
+  {
     title: "Cameras in common areas",
     description: "Safety cameras in living areas and hallways with night vision and phone alerts. Monitor your parent's movement patterns and get notified of unusual activity. Bedrooms and bathrooms are never monitored.",
   },

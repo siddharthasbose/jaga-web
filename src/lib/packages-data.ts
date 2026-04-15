@@ -27,6 +27,7 @@ export const packages: CarePackage[] = [
     features: [
       { text: "Grab bars in bathrooms", included: true },
       { text: "Anti-slip mats in bathrooms", included: true },
+      { text: "Shower chair", included: true },
       { text: "Cameras in common areas", included: true },
       { text: "Low / accessible bed setup", included: true },
       { text: "Hospital bed", included: false },
@@ -47,6 +48,7 @@ export const packages: CarePackage[] = [
     features: [
       { text: "Grab bars in bathrooms", included: true },
       { text: "Anti-slip mats in bathrooms", included: true },
+      { text: "Shower chair", included: true },
       { text: "Cameras in common areas", included: true },
       { text: "Low / accessible bed setup", included: true },
       { text: "Hospital bed", included: true },
@@ -55,6 +57,7 @@ export const packages: CarePackage[] = [
     ],
     cta: "Get started",
     popular: true,
+    priceFrom: { currency: "S$", amount: "2,953" },
   },
   {
     slug: "someone-by-their-side",
@@ -66,6 +69,7 @@ export const packages: CarePackage[] = [
     features: [
       { text: "Grab bars in bathrooms", included: true },
       { text: "Anti-slip mats in bathrooms", included: true },
+      { text: "Shower chair", included: true },
       { text: "Cameras in common areas", included: true },
       { text: "Low / accessible bed setup", included: true },
       { text: "Hospital bed", included: true },

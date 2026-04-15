@@ -35,6 +35,10 @@ const featureDetails = [
     description: "Medical-grade anti-slip mats for shower floors, bathroom tiles, and entryways. Unlike store-bought mats, ours are custom-cut to fit your bathroom dimensions and secured with professional adhesive that won't peel in humid conditions.",
   },
   {
+    title: "Shower chair",
+    description: "A sturdy, height-adjustable shower chair with non-slip rubber feet and a foldable frame for easy storage. Lets your parent bathe sitting down — the single biggest reduction in bathroom fall risk. Chosen based on their weight, bathroom size, and whether they can transfer independently.",
+  },
+  {
     title: "Cameras in common areas",
     description: "Discreet safety cameras in living areas and hallways so you can check on your parent from your phone. We handle setup, Wi-Fi connection, and app installation. Night vision included. Your parent's bedroom and bathroom are never monitored — privacy matters.",
   },
