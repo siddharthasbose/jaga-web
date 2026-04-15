@@ -150,8 +150,8 @@ const howSteps = [
     number: "02",
     title: "Dapatkan cadangan anda",
     description:
-      "Jaga menghantar cadangan terperinci dan sebut harga dalam 48 jam. Tidak berpuas hati? Kami akan sesuaikan sehingga anda berpuas hati.",
-    detail: "Semak sehingga puas hati",
+      "Pelan penjagaan yang disesuaikan tiba dalam 48 jam. Baca mengikut kadar anda — tiada tekanan. Ada soalan atau perubahan? Balas dan kami akan sesuaikan.",
+    detail: "Tiada obligasi · balas untuk sesuaikan",
     color: "#1A5F7A",
     accent: "#E3F0F7",
   },

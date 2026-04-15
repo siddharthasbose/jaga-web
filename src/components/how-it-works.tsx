@@ -19,8 +19,8 @@ const steps = [
     number: "02",
     title: "Get your proposal",
     description:
-      "Jaga sends a detailed proposal and quote within 48 hours. Not happy with the design or price? We'll adjust the plan until it's right for you.",
-    detail: "Revise until you're happy",
+      "A tailored care plan arrives within 48 hours. Review it at your own pace — no pressure. Questions or changes? Reply and we'll adjust.",
+    detail: "No obligation · reply to adjust",
     color: "#1A5F7A",
     accent: "#E3F0F7",
   },
