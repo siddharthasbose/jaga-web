@@ -395,6 +395,7 @@ interface CarePackageMs {
   features: PackageFeatureMs[];
   popular: boolean;
   cta: string;
+  priceFrom?: { currency: string; amount: string };
 }
 
 const packagesMs: CarePackageMs[] = [
@@ -415,6 +416,7 @@ const packagesMs: CarePackageMs[] = [
     ],
     cta: "Mula sekarang",
     popular: false,
+    priceFrom: { currency: "RM", amount: "2,274" },
   },
   {
     slug: "help-them-move",
@@ -529,6 +531,43 @@ function PackageCardMs({ pkg, delay }: { pkg: CarePackageMs; delay: number }) {
         <div className="flex flex-1 flex-col p-6">
           <h3 className="font-serif text-2xl text-text">{pkg.name}</h3>
           <p className="mt-1 text-sm text-text-muted">{pkg.tagline}</p>
+
+          {/* Harga */}
+          {pkg.priceFrom ? (
+            <div className="mt-4">
+              <div className="flex items-baseline justify-between">
+                <span className="text-[11px] font-semibold uppercase tracking-wider text-text-muted">
+                  Bermula dari
+                </span>
+                <span className="text-[10px] text-text-muted">
+                  sebut harga percuma
+                </span>
+              </div>
+              <p className="mt-1 font-serif text-3xl font-semibold leading-none">
+                <span
+                  className="text-lg font-medium"
+                  style={{ color: pkg.color }}
+                >
+                  {pkg.priceFrom.currency}
+                </span>
+                <span className="ml-1" style={{ color: pkg.color }}>
+                  {pkg.priceFrom.amount}
+                </span>
+              </p>
+              <p className="mt-1.5 text-xs text-text-muted">
+                Sebut harga muktamad selepas penilaian rumah percuma
+              </p>
+            </div>
+          ) : (
+            <div className="mt-4">
+              <p className="text-[11px] font-semibold uppercase tracking-wider text-text-muted">
+                Sebut harga khusus
+              </p>
+              <p className="mt-1.5 text-xs text-text-muted">
+                Sebut harga muktamad selepas penilaian rumah percuma
+              </p>
+            </div>
+          )}
 
           <hr className="my-4 border-gray-200" />
 

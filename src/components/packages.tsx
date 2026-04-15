@@ -107,6 +107,41 @@ function PackageCard({
           <h3 className="font-serif text-2xl text-text">{pkg.name}</h3>
           <p className="mt-1 text-sm text-text-muted">{pkg.tagline}</p>
 
+          {/* Price */}
+          {pkg.priceFrom ? (
+            <div className="mt-4">
+              <div className="flex items-baseline justify-between">
+                <span className="text-[11px] font-semibold uppercase tracking-wider text-text-muted">
+                  Starts from
+                </span>
+                <span className="text-[10px] text-text-muted">free quote</span>
+              </div>
+              <p className="mt-1 font-serif text-3xl font-semibold leading-none">
+                <span
+                  className="text-lg font-medium"
+                  style={{ color: pkg.color }}
+                >
+                  {pkg.priceFrom.currency}
+                </span>
+                <span className="ml-1" style={{ color: pkg.color }}>
+                  {pkg.priceFrom.amount}
+                </span>
+              </p>
+              <p className="mt-1.5 text-xs text-text-muted">
+                Final quote after free home assessment
+              </p>
+            </div>
+          ) : (
+            <div className="mt-4">
+              <p className="text-[11px] font-semibold uppercase tracking-wider text-text-muted">
+                Custom quote
+              </p>
+              <p className="mt-1.5 text-xs text-text-muted">
+                Final quote after free home assessment
+              </p>
+            </div>
+          )}
+
           {/* Divider */}
           <hr className="my-4 border-gray-200" />
 

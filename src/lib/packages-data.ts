@@ -13,6 +13,7 @@ export interface CarePackage {
   features: PackageFeature[];
   popular: boolean;
   cta: string;
+  priceFrom?: { currency: string; amount: string };
 }
 
 export const packages: CarePackage[] = [
@@ -34,6 +35,7 @@ export const packages: CarePackage[] = [
     ],
     cta: "Get started",
     popular: false,
+    priceFrom: { currency: "S$", amount: "975" },
   },
   {
     slug: "help-them-move",
