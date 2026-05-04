@@ -11,7 +11,7 @@
  */
 
 const KEY = "a1a690ac23e86a31f9e731d77d42206d";
-const HOST = "jaga.care";
+const HOST = "www.jaga.care";
 const SITEMAP_URL = `https://${HOST}/sitemap.xml`;
 const KEY_LOCATION = `https://${HOST}/${KEY}.txt`;
 

@@ -1,7 +1,9 @@
 import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.jaga.care";
+  // Hardcoded to www — apex 307s here, and GSC's verified property is www.
+  // Don't read NEXT_PUBLIC_SITE_URL: the Vercel env may still hold apex.
+  const baseUrl = "https://www.jaga.care";
   const now = new Date();
 
   const enRoutes: MetadataRoute.Sitemap = [
