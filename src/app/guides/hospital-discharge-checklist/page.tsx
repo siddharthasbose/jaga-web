@@ -9,6 +9,12 @@ export const metadata: Metadata = {
     "Only 66% of caregivers feel prepared at discharge. A practical checklist for Malaysian and Singaporean families bringing a parent home from hospital after stroke, surgery, or a fall.",
   alternates: {
     canonical: "https://jaga.care/guides/hospital-discharge-checklist",
+    languages: {
+      "en-MY": "https://jaga.care/guides/hospital-discharge-checklist",
+      "en-SG": "https://jaga.care/guides/hospital-discharge-checklist",
+      "ms-MY": "https://jaga.care/ms/panduan/senarai-semak-keluar-hospital",
+      "x-default": "https://jaga.care/guides/hospital-discharge-checklist",
+    },
   },
   keywords: [
     "hospital discharge checklist malaysia",
@@ -26,6 +32,7 @@ export const metadata: Metadata = {
 const articleJsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
+  inLanguage: "en",
   headline:
     "Hospital Discharge Checklist for Malaysia — What to Prepare at Home",
   description:
@@ -41,7 +48,47 @@ const articleJsonLd = {
     url: "https://jaga.care",
   },
   datePublished: "2026-03-25",
-  dateModified: "2026-03-25",
+  dateModified: "2026-05-04",
+};
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  inLanguage: "en",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "What should I ask the hospital for before discharge?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Ask for five things in writing: a complete medication list (name, dose, frequency), follow-up appointment dates, a physiotherapy/rehab referral letter, a medical summary letter, and a mobility assessment from the OT/physio (can they walk? climb stairs? get to the toilet alone?). Don't assume these will be provided automatically.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Which room should I prioritise modifying for safety?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "The bathroom is the highest priority. 27% of elderly home falls in Malaysia happen in the bathroom. Install grab bars beside the toilet and inside the shower, anti-slip mats, a shower chair, and a raised toilet seat if needed.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Do I need to buy a hospital bed?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "No. Hospital beds are available on monthly rental in Malaysia and Singapore. Renting is smarter because your parent's needs will change in 3-6 months. Return the bed when their recovery improves.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What are the warning signs to watch for in the first week?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Go to emergency immediately if you notice: sudden confusion, new weakness on one side of the body, severe headache, fever, or difficulty breathing. Keep the emergency number (999 Malaysia, 995 Singapore) visible and accessible.",
+      },
+    },
+  ],
 };
 
 function ChecklistItem({ children }: { children: React.ReactNode }) {
@@ -61,6 +108,10 @@ export default function HospitalDischargeChecklistPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
       {/* Hero */}

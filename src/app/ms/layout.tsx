@@ -32,8 +32,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://jaga.care/ms",
     languages: {
-      en: "https://jaga.care",
-      ms: "https://jaga.care/ms",
+      "en-MY": "https://jaga.care",
+      "en-SG": "https://jaga.care",
+      "ms-MY": "https://jaga.care/ms",
+      "x-default": "https://jaga.care",
     },
   },
   openGraph: {

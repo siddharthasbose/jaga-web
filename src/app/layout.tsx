@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Playfair_Display, DM_Sans } from "next/font/google";
 import Script from "next/script";
+import { headers } from "next/headers";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 import "./globals.css";
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
     apple: "/favicon.png",
   },
   description:
-    "We set up grab bars, hospital beds, and safety equipment so your parent's home is ready before hospital discharge. Serving Malaysia and Singapore.",
+    "Home safety setup for aging parents in Kuala Lumpur and Singapore. Grab bars, hospital beds, post-discharge care — installed in days, not weeks. WhatsApp Sumira to start.",
   keywords: [
     // English - Malaysia
     "home safety setup Malaysia",
@@ -111,8 +112,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://jaga.care",
     languages: {
-      en: "https://jaga.care",
-      ms: "https://jaga.care/ms",
+      "en-MY": "https://jaga.care",
+      "en-SG": "https://jaga.care",
+      "ms-MY": "https://jaga.care/ms",
+      "x-default": "https://jaga.care",
     },
   },
   openGraph: {
@@ -143,13 +146,38 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
+  "@id": "https://jaga.care/#localbusiness",
   name: "Jaga.Care",
-  description: "Home safety setup and care coordination for aging parents",
+  description:
+    "Home safety setup and care coordination for aging parents in Malaysia and Singapore. Grab bars, hospital beds, wheelchairs, and post-discharge home modifications.",
   url: "https://jaga.care",
   email: "hello@jaga.care",
+  telephone: "+6589499681",
+  priceRange: "S$$",
+  image: "https://jaga.care/images/og-image.png",
   areaServed: [
-    { "@type": "Country", name: "Malaysia" },
-    { "@type": "Country", name: "Singapore" },
+    {
+      "@type": "Country",
+      name: "Malaysia",
+      sameAs: "https://en.wikipedia.org/wiki/Malaysia",
+    },
+    {
+      "@type": "Country",
+      name: "Singapore",
+      sameAs: "https://en.wikipedia.org/wiki/Singapore",
+    },
+    { "@type": "City", name: "Kuala Lumpur" },
+    { "@type": "City", name: "Petaling Jaya" },
+    { "@type": "City", name: "Singapore" },
+  ],
+  contactPoint: [
+    {
+      "@type": "ContactPoint",
+      telephone: "+6589499681",
+      contactType: "customer support",
+      areaServed: ["MY", "SG"],
+      availableLanguage: ["en", "ms"],
+    },
   ],
   serviceType: "Home Healthcare Setup",
   hasOfferCatalog: {
@@ -184,14 +212,18 @@ const jsonLd = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const hdrs = await headers();
+  const pathname = hdrs.get("x-pathname") || hdrs.get("x-invoke-path") || "";
+  const isMalay = pathname.startsWith("/ms");
+  const lang = isMalay ? "ms-MY" : "en";
   return (
     <html
-      lang="en"
+      lang={lang}
       className={`${playfair.variable} ${dmSans.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">

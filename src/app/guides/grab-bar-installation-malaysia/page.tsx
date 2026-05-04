@@ -8,6 +8,12 @@ export const metadata: Metadata = {
     "27% of elderly home falls in Malaysia happen in the bathroom. A guide to grab bar placement, materials, standards, and professional installation for Malaysian and Singaporean homes.",
   alternates: {
     canonical: "https://jaga.care/guides/grab-bar-installation-malaysia",
+    languages: {
+      "en-MY": "https://jaga.care/guides/grab-bar-installation-malaysia",
+      "en-SG": "https://jaga.care/guides/grab-bar-installation-malaysia",
+      "ms-MY": "https://jaga.care/ms/panduan/pemasangan-palang-pegangan-malaysia",
+      "x-default": "https://jaga.care/guides/grab-bar-installation-malaysia",
+    },
   },
   keywords: [
     "grab bar installation malaysia",

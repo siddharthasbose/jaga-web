@@ -8,6 +8,12 @@ export const metadata: Metadata = {
     "73% of stroke survivors fall within the first year — most at home. A practical guide to home modifications, equipment, and safety setup for stroke recovery in Malaysia and Singapore.",
   alternates: {
     canonical: "https://jaga.care/guides/prepare-home-after-stroke",
+    languages: {
+      "en-MY": "https://jaga.care/guides/prepare-home-after-stroke",
+      "en-SG": "https://jaga.care/guides/prepare-home-after-stroke",
+      "ms-MY": "https://jaga.care/ms/panduan/persediaan-rumah-selepas-strok",
+      "x-default": "https://jaga.care/guides/prepare-home-after-stroke",
+    },
   },
   keywords: [
     "post stroke care at home",

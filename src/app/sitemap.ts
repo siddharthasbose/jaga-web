@@ -2,86 +2,70 @@ import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://jaga.care";
-  return [
+  const now = new Date();
+
+  const enRoutes: MetadataRoute.Sitemap = [
+    { url: baseUrl, lastModified: now, changeFrequency: "weekly", priority: 1 },
+    { url: `${baseUrl}/how-it-works`, lastModified: now, priority: 0.8 },
+    { url: `${baseUrl}/packages`, lastModified: now, priority: 0.8 },
+    { url: `${baseUrl}/packages/make-it-safe`, lastModified: now, priority: 0.7 },
+    { url: `${baseUrl}/packages/help-them-move`, lastModified: now, priority: 0.7 },
+    { url: `${baseUrl}/packages/someone-by-their-side`, lastModified: now, priority: 0.7 },
     {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/how-it-works`,
-      lastModified: new Date(),
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/get-a-quote`,
-      lastModified: new Date(),
+      url: `${baseUrl}/guides/prepare-home-after-stroke`,
+      lastModified: now,
+      changeFrequency: "monthly",
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/packages`,
-      lastModified: new Date(),
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/packages/make-it-safe`,
-      lastModified: new Date(),
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/packages/help-them-move`,
-      lastModified: new Date(),
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/packages/someone-by-their-side`,
-      lastModified: new Date(),
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/guides/prepare-home-after-stroke`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
       url: `${baseUrl}/guides/hospital-discharge-checklist`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "monthly",
-      priority: 0.8,
+      priority: 0.9,
     },
     {
       url: `${baseUrl}/guides/grab-bar-installation-malaysia`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "monthly",
-      priority: 0.8,
+      priority: 0.9,
     },
-    {
-      url: `${baseUrl}/about`,
-      lastModified: new Date(),
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/privacy`,
-      lastModified: new Date(),
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/terms`,
-      lastModified: new Date(),
-      priority: 0.3,
-    },
+    { url: `${baseUrl}/about`, lastModified: now, priority: 0.6 },
+    { url: `${baseUrl}/get-a-quote`, lastModified: now, priority: 0.4 },
+    { url: `${baseUrl}/privacy`, lastModified: now, priority: 0.3 },
+    { url: `${baseUrl}/terms`, lastModified: now, priority: 0.3 },
+  ];
+
+  const msRoutes: MetadataRoute.Sitemap = [
     {
       url: `${baseUrl}/ms`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/ms/panduan/senarai-semak-keluar-hospital`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/ms/panduan/pemasangan-palang-pegangan-malaysia`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/ms/panduan/persediaan-rumah-selepas-strok`,
+      lastModified: now,
+      changeFrequency: "monthly",
       priority: 0.9,
     },
     {
       url: `${baseUrl}/ms/dapatkan-sebutharga`,
-      lastModified: new Date(),
-      priority: 0.8,
+      lastModified: now,
+      priority: 0.4,
     },
   ];
+
+  return [...enRoutes, ...msRoutes];
 }
