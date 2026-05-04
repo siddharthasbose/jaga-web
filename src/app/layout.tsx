@@ -118,6 +118,9 @@ export const metadata: Metadata = {
       "x-default": "https://jaga.care",
     },
   },
+  verification: {
+    google: "4kcQrkkp672Ph2HA09SVfWdMlrZjjmvtv6KplzH3-zQ",
+  },
   openGraph: {
     type: "website",
     locale: "en_SG",
