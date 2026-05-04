@@ -6,13 +6,15 @@ import { AnimateIn } from "@/components/animate-in";
 import { submitLead } from "@/lib/actions";
 import { trackEvent } from "@/lib/analytics";
 import { packages } from "@/lib/packages-data";
+import { getWhatsAppUrl, WA_DEFAULT_MESSAGE } from "@/lib/whatsapp";
+import { MessageCircle } from "lucide-react";
 
 type FormState = "idle" | "submitting" | "success" | "error";
 
 const steps = [
   {
-    title: "Tell us what you need",
-    desc: "Describe the situation or email us photos",
+    title: "Let us help you figure out what you need",
+    desc: "Tell us about situation and email us photos of your space",
   },
   {
     title: "We plan & quote",
@@ -72,6 +74,18 @@ export function QuoteForm() {
 
   const disabled = formState === "submitting";
 
+  const buildPrefilled = () => {
+    const parts: string[] = ["Hi Sumira,"];
+    if (name.trim()) parts.push(`I'm ${name.trim()}.`);
+    if (selectedPackage) parts.push(`I'm interested in the ${selectedPackage} package.`);
+    if (message.trim()) {
+      parts.push(`Here's our situation: ${message.trim()}`);
+    } else {
+      parts.push("I'd like to chat about home setup for my parent.");
+    }
+    return parts.join(" ");
+  };
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setPhoneError("");
@@ -81,6 +95,11 @@ export function QuoteForm() {
       setPhoneError("Phone number is required.");
       return;
     }
+
+    // Open WhatsApp first, while we still have the user gesture (popup blockers).
+    const waUrl = getWhatsAppUrl(buildPrefilled());
+    window.open(waUrl, "_blank", "noopener,noreferrer");
+    trackEvent("whatsapp_click", { location: "quote_form_submit" });
 
     setFormState("submitting");
 
@@ -113,11 +132,11 @@ export function QuoteForm() {
                 Get started
               </p>
               <h2 className="mt-4 font-serif text-3xl leading-snug tracking-tight text-text sm:text-4xl lg:text-5xl">
-                Send us pictures of your space. We&rsquo;ll handle the rest.
+                Tell us about your situation. Our specialists will take it from there.
               </h2>
               <p className="mt-4 text-lg leading-relaxed text-text-muted">
-                Fill out the form or email us photos directly — we&rsquo;ll
-                come back with a plan and a quote.
+                Reach out to us and we&rsquo;ll come back with a plan and a
+                quote tailored to your situation.
               </p>
 
               {/* Steps */}
@@ -144,7 +163,7 @@ export function QuoteForm() {
             <div className="overflow-hidden rounded-2xl border border-warm-gray bg-white shadow-lg">
               {/* Header bar */}
               <div className="flex items-center justify-between border-b border-warm-gray px-6 py-4">
-                <p className="font-semibold text-text">Get a free quote</p>
+                <p className="font-semibold text-text">Talk to a specialist</p>
                 <p className="text-sm text-text-faint">Takes 1 minute</p>
               </div>
 
@@ -243,7 +262,10 @@ export function QuoteForm() {
                           Sending...
                         </>
                       ) : (
-                        "Get my free quote →"
+                        <>
+                          <MessageCircle className="h-4 w-4" />
+                          Talk to a specialist
+                        </>
                       )}
                     </button>
 

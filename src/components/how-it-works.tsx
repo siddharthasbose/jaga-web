@@ -2,49 +2,68 @@
 
 import { motion } from "framer-motion";
 import { AnimateIn } from "@/components/animate-in";
-import Link from "next/link";
 import { useState } from "react";
+import { MessageCircle } from "lucide-react";
+import { getWhatsAppUrl, WA_DEFAULT_MESSAGE } from "@/lib/whatsapp";
+import { trackEvent } from "@/lib/analytics";
 
 const steps = [
   {
     number: "01",
-    title: "Snap your space",
+    title: "Talk to a specialist",
     description:
-      "Take photos of the rooms that need changes — bathrooms, bedrooms, hallways. Send them to us and we'll identify what's needed.",
-    detail: "Email or form",
+      "Tell us about your parent's health situation via WhatsApp or chat. Our eldercare specialist will listen, ask the right questions, and help you determine what your space needs.",
+    detail: "No forms to fill · just a conversation",
     color: "#2D7A6B",
     accent: "#E8F5F1",
   },
   {
     number: "02",
-    title: "Get your proposal",
+    title: "Snap your space",
     description:
-      "A tailored care plan arrives within 48 hours. Review it at your own pace — no pressure. Questions or changes? Reply and we'll adjust.",
-    detail: "No obligation · reply to adjust",
+      "Take photos of the rooms that need changes — bathrooms, bedrooms, hallways. Send them to us and we'll identify what's needed.",
+    detail: "Email or WhatsApp",
     color: "#1A5F7A",
     accent: "#E3F0F7",
   },
   {
     number: "03",
-    title: "Pick your date",
+    title: "Get your proposal",
     description:
-      "Choose the date and time that works for your family. We work around hospital discharge schedules.",
-    detail: "Flexible scheduling",
+      "A tailored care plan arrives within 48 hours. Review it at your own pace — no pressure. Questions or changes? Reply and we'll adjust.",
+    detail: "No obligation · reply to adjust",
     color: "#C27A2A",
     accent: "#FFF4E6",
   },
   {
     number: "04",
+    title: "Pick your date",
+    description:
+      "Choose the date and time that works for your family. We work around hospital discharge schedules.",
+    detail: "Flexible scheduling",
+    color: "#6B4C8A",
+    accent: "#F0EBF5",
+  },
+  {
+    number: "05",
     title: "Home ready in 1 week",
     description:
       "Jaga-certified contractors renovate and set up everything. Your parent comes home to a safe space. If we don't finish in one week, you get 20% off.",
     detail: "1-week guarantee or 20% off",
-    color: "#6B4C8A",
-    accent: "#F0EBF5",
+    color: "#2D7A6B",
+    accent: "#E8F5F1",
   },
 ];
 
-const timelineLabels = ["Day 1", "48 hours", "You choose", "Within 1 week"];
+const timelineLabels = ["Today", "Day 1", "48 hours", "You choose", "Within 1 week"];
+
+function ChatIcon({ color }: { color: string }) {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+    </svg>
+  );
+}
 
 function CameraIcon({ color }: { color: string }) {
   return (
@@ -85,7 +104,7 @@ function HomeCheckIcon({ color }: { color: string }) {
   );
 }
 
-const stepIcons = [CameraIcon, ClipboardCheckIcon, CalendarIcon, HomeCheckIcon];
+const stepIcons = [ChatIcon, CameraIcon, ClipboardCheckIcon, CalendarIcon, HomeCheckIcon];
 
 export function HowItWorks() {
   const [hoveredStep, setHoveredStep] = useState<number | null>(null);
@@ -111,7 +130,7 @@ export function HowItWorks() {
         </AnimateIn>
 
         {/* Step cards — grid for equal heights */}
-        <div className="mt-16 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-16 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-5">
           {steps.map((step, i) => {
             const Icon = stepIcons[i];
             const isHovered = hoveredStep === i;
@@ -233,15 +252,21 @@ export function HowItWorks() {
               Ready to get started?
             </h3>
             <p className="relative z-10 mt-3 text-sm text-white/80">
-              Tell us about your situation and we&rsquo;ll take it from there.
+              Not sure what your parent needs? No problem. Our specialist will
+              help you determine the best package based on your parent&rsquo;s
+              health, mobility and your home layout.
             </p>
             <div className="relative z-10 mt-6 flex justify-center">
-              <Link
-                href="/get-a-quote"
-                className="inline-flex items-center rounded-full bg-white px-6 py-3 text-sm font-medium text-[#1A5F7A] transition-all hover:bg-white/90 hover:shadow-lg hover:-translate-y-1"
+              <a
+                href={getWhatsAppUrl(WA_DEFAULT_MESSAGE)}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackEvent("whatsapp_click", { location: "how_it_works_cta" })}
+                className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-medium text-[#1A5F7A] transition-all hover:bg-white/90 hover:shadow-lg hover:-translate-y-1"
               >
-                Get a free quote →
-              </Link>
+                <MessageCircle className="h-4 w-4" />
+                Talk to a specialist
+              </a>
             </div>
           </div>
         </AnimateIn>

@@ -2,17 +2,19 @@
 
 import { useState, useEffect, type FormEvent, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
+import { MessageCircle } from "lucide-react";
 import { AnimateIn } from "@/components/animate-in";
 import { submitLead } from "@/lib/actions";
 import { trackEvent } from "@/lib/analytics";
 import { packages } from "@/lib/packages-data";
+import { getWhatsAppUrl } from "@/lib/whatsapp";
 
 type FormState = "idle" | "submitting" | "success" | "error";
 
 const steps = [
   {
-    title: "Beritahu kami apa yang anda perlukan",
-    desc: "Terangkan situasi atau emel kami gambar",
+    title: "Biar kami bantu anda menentukan apa yang anda perlukan",
+    desc: "Beritahu kami tentang situasi dan emel kami gambar ruangan anda",
   },
   {
     title: "Kami merancang & memberi sebut harga",
@@ -72,6 +74,18 @@ function QuoteFormMs() {
 
   const disabled = formState === "submitting";
 
+  const buildPrefilled = () => {
+    const parts: string[] = ["Hai Sumira,"];
+    if (name.trim()) parts.push(`saya ${name.trim()}.`);
+    if (selectedPackage) parts.push(`Saya berminat dengan pakej ${selectedPackage}.`);
+    if (message.trim()) {
+      parts.push(`Berikut situasi kami: ${message.trim()}`);
+    } else {
+      parts.push("Saya ingin berbual tentang persediaan rumah untuk ibu bapa saya.");
+    }
+    return parts.join(" ");
+  };
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setPhoneError("");
@@ -81,6 +95,10 @@ function QuoteFormMs() {
       setPhoneError("Nombor telefon diperlukan.");
       return;
     }
+
+    const waUrl = getWhatsAppUrl(buildPrefilled());
+    window.open(waUrl, "_blank", "noopener,noreferrer");
+    trackEvent("whatsapp_click", { location: "quote_form_submit_ms" });
 
     setFormState("submitting");
 
@@ -115,11 +133,11 @@ function QuoteFormMs() {
                 Mula sekarang
               </p>
               <h2 className="mt-4 font-serif text-3xl leading-snug tracking-tight text-text sm:text-4xl lg:text-5xl">
-                Hantar gambar ruangan anda. Kami uruskan yang lain.
+                Beritahu kami tentang situasi anda. Pakar kami akan uruskan yang lain.
               </h2>
               <p className="mt-4 text-lg leading-relaxed text-text-muted">
-                Isi borang atau emel kami gambar secara terus — kami akan kembali
-                dengan pelan dan sebut harga.
+                Hubungi kami dan kami akan kembali dengan pelan dan sebut harga
+                yang disesuaikan dengan situasi anda.
               </p>
 
               <ol className="mt-10 flex flex-col gap-8">
@@ -145,7 +163,7 @@ function QuoteFormMs() {
             <div className="overflow-hidden rounded-2xl border border-warm-gray bg-white shadow-lg">
               <div className="flex items-center justify-between border-b border-warm-gray px-6 py-4">
                 <p className="font-semibold text-text">
-                  Dapatkan sebut harga percuma
+                  Bercakap dengan pakar
                 </p>
                 <p className="text-sm text-text-faint">Mengambil masa 1 minit</p>
               </div>
@@ -245,7 +263,10 @@ function QuoteFormMs() {
                           Menghantar...
                         </>
                       ) : (
-                        "Dapatkan sebut harga percuma →"
+                        <>
+                          <MessageCircle className="h-4 w-4" />
+                          Bercakap dengan pakar
+                        </>
                       )}
                     </button>
 

@@ -32,9 +32,14 @@ export default function HowItWorksPage() {
           </AnimateIn>
           <AnimateIn delay={0.2}>
             <div className="mt-12 text-center">
-              <Link href="/get-a-quote" className="inline-block bg-green hover:bg-green-dark text-white px-8 py-4 rounded-xl text-base font-medium transition-all">
-                Get a free quote →
-              </Link>
+              <a
+                href="https://wa.me/6589499681?text=Hi%20Sumira%2C%20I%27d%20like%20to%20chat%20about%20home%20setup%20for%20my%20parent."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-green hover:bg-green-dark text-white px-8 py-4 rounded-xl text-base font-medium transition-all"
+              >
+                Talk to a specialist →
+              </a>
             </div>
           </AnimateIn>
         </div>

@@ -257,9 +257,14 @@ export default function MakeItSafePage() {
       {/* CTA */}
       <section className="py-16 px-6 md:px-12 text-center">
         <AnimateIn>
-          <Link href="/get-a-quote?package=make-it-safe" className="inline-block bg-green hover:bg-green-dark text-white px-8 py-4 rounded-xl text-base font-medium transition-all">
-            Get a free quote for {pkg.name} →
-          </Link>
+          <a
+            href={`https://wa.me/6589499681?text=${encodeURIComponent(`Hi Sumira, I'm interested in the ${pkg.name} package.`)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block bg-green hover:bg-green-dark text-white px-8 py-4 rounded-xl text-base font-medium transition-all"
+          >
+            Talk to a specialist about {pkg.name} →
+          </a>
           <p className="text-sm text-text-faint mt-3">Setup within 48 hours · No contracts</p>
         </AnimateIn>
       </section>

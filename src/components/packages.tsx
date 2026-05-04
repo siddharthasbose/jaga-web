@@ -1,11 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { motion } from "framer-motion";
 import { MessageCircle } from "lucide-react";
 import { AnimateIn } from "@/components/animate-in";
 import { packages, type CarePackage } from "@/lib/packages-data";
+import { getWhatsAppUrl, waPackageMessage, WA_HELP_CHOOSE_MESSAGE } from "@/lib/whatsapp";
+import { trackEvent } from "@/lib/analytics";
 
 function CheckIcon({ color }: { color: string }) {
   return (
@@ -172,21 +173,27 @@ function PackageCard({
           <div className="mt-auto pt-6">
             {/* CTA Button */}
             {pkg.popular ? (
-              <Link
-                href={`/get-a-quote?package=${pkg.slug}`}
+              <a
+                href={getWhatsAppUrl(waPackageMessage(pkg.name))}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackEvent("whatsapp_click", { location: `package_card_${pkg.slug}` })}
                 className="block w-full rounded-full px-6 py-2.5 text-center text-sm font-medium text-white transition-opacity hover:opacity-90"
                 style={{ backgroundColor: pkg.color }}
               >
                 {pkg.cta}
-              </Link>
+              </a>
             ) : (
-              <Link
-                href={`/get-a-quote?package=${pkg.slug}`}
+              <a
+                href={getWhatsAppUrl(waPackageMessage(pkg.name))}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackEvent("whatsapp_click", { location: `package_card_${pkg.slug}` })}
                 className="block w-full rounded-full border px-6 py-2.5 text-center text-sm font-medium transition-opacity hover:opacity-80"
                 style={{ borderColor: pkg.color, color: pkg.color }}
               >
                 {pkg.cta}
-              </Link>
+              </a>
             )}
 
             <p className="mt-3 text-center text-xs text-text-muted">
@@ -264,15 +271,18 @@ export function Packages() {
               Not sure which level your parent needs?
             </p>
             <p className="mt-1 text-sm text-text-muted">
-              Email us and we&rsquo;ll help you choose.
+              Talk to a specialist and find a package that suits your needs.
             </p>
             <div className="mt-4 flex justify-center">
               <a
-                href="mailto:hello@jaga.care?subject=Help me choose a package"
+                href={getWhatsAppUrl(WA_HELP_CHOOSE_MESSAGE)}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackEvent("whatsapp_click", { location: "packages_help_choose" })}
                 className="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white/50 px-6 py-2.5 text-sm font-medium text-text transition-all hover:bg-white hover:shadow-md"
               >
                 <MessageCircle className="h-4 w-4" />
-                Email us
+                Talk to a specialist
               </a>
             </div>
           </div>

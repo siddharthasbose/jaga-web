@@ -4,6 +4,8 @@ import Link from "next/link";
 import { JagaLogo } from "@/components/jaga-logo";
 import { Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
+import { getWhatsAppUrl, WA_DEFAULT_MESSAGE } from "@/lib/whatsapp";
+import { trackEvent } from "@/lib/analytics";
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
@@ -26,6 +28,7 @@ export function Nav() {
   }, [mobileMenuOpen]);
 
   const closeMenu = () => setMobileMenuOpen(false);
+  const waUrl = getWhatsAppUrl(WA_DEFAULT_MESSAGE);
 
   return (
     <>
@@ -49,9 +52,15 @@ export function Nav() {
             <Link href="/#packages" className="hover:text-text transition-colors">
               Packages
             </Link>
-            <Link href="/get-a-quote" className="hover:text-text transition-colors">
-              Get a quote
-            </Link>
+            <a
+              href={waUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackEvent("whatsapp_click", { location: "nav_desktop" })}
+              className="hover:text-text transition-colors"
+            >
+              Talk to a specialist
+            </a>
             {/* Language switcher */}
             <span className="text-text-faint text-xs border border-brown/15 rounded-full px-3 py-1">
               <Link href="/" className="hover:text-text transition-colors">EN</Link>
@@ -99,9 +108,18 @@ export function Nav() {
               <Link href="/#packages" onClick={closeMenu} className="hover:text-green transition-colors">
                 Packages
               </Link>
-              <Link href="/get-a-quote" onClick={closeMenu} className="hover:text-green transition-colors">
-                Get a quote
-              </Link>
+              <a
+                href={waUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => {
+                  trackEvent("whatsapp_click", { location: "nav_mobile" });
+                  closeMenu();
+                }}
+                className="hover:text-green transition-colors"
+              >
+                Talk to a specialist
+              </a>
               <Link
                 href="/get-a-quote"
                 onClick={closeMenu}

@@ -1,10 +1,11 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { Mail } from "lucide-react";
+import { Mail, MessageCircle } from "lucide-react";
+import { getWhatsAppUrl, WA_DEFAULT_MESSAGE } from "@/lib/whatsapp";
+import { trackEvent } from "@/lib/analytics";
 
 const ease = [0.4, 0, 0.2, 1] as const;
 
@@ -59,12 +60,16 @@ export function Hero() {
               {...stagger(3)}
               className="mt-8 flex flex-wrap items-center gap-4"
             >
-              <Link
-                href="/get-a-quote"
-                className="inline-flex items-center rounded-full bg-green px-8 py-3.5 text-base font-medium text-white transition-all hover:bg-green-dark hover:shadow-lg hover:shadow-green/20"
+              <a
+                href={getWhatsAppUrl(WA_DEFAULT_MESSAGE)}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackEvent("whatsapp_click", { location: "hero" })}
+                className="inline-flex items-center gap-2 rounded-full bg-green px-8 py-3.5 text-base font-medium text-white transition-all hover:bg-green-dark hover:shadow-lg hover:shadow-green/20"
               >
-                Get a free quote →
-              </Link>
+                <MessageCircle className="h-4 w-4" />
+                Chat with a specialist
+              </a>
               <a
                 href="mailto:hello@jaga.care?subject=Home setup enquiry"
                 className="inline-flex items-center gap-2 rounded-full border border-brown/20 px-6 py-3 text-base font-medium text-brown transition-all hover:border-brown/40 hover:bg-warm-gray/50"

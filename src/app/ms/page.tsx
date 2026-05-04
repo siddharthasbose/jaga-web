@@ -1,11 +1,19 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useState } from "react";
 import { Mail, MessageCircle } from "lucide-react";
 import { AnimateIn } from "@/components/animate-in";
+import { getWhatsAppUrl } from "@/lib/whatsapp";
+import { trackEvent } from "@/lib/analytics";
+
+const WA_DEFAULT_MS =
+  "Hai Sumira, saya ingin berbual tentang persediaan rumah untuk ibu bapa saya.";
+const WA_HELP_CHOOSE_MS =
+  "Hai Sumira, saya perlukan bantuan memilih pakej yang sesuai untuk ibu bapa saya.";
+const waPackageMessageMs = (name: string) =>
+  `Hai Sumira, saya berminat dengan pakej ${name}.`;
 
 /* ------------------------------------------------------------------ */
 /*  Hero                                                               */
@@ -65,12 +73,16 @@ function HeroMs() {
               {...stagger(3)}
               className="mt-8 flex flex-wrap items-center gap-4"
             >
-              <Link
-                href="/ms/dapatkan-sebutharga"
-                className="inline-flex items-center rounded-full bg-green px-8 py-3.5 text-base font-medium text-white transition-all hover:bg-green-dark hover:shadow-lg hover:shadow-green/20"
+              <a
+                href={getWhatsAppUrl(WA_DEFAULT_MS)}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackEvent("whatsapp_click", { location: "hero_ms" })}
+                className="inline-flex items-center gap-2 rounded-full bg-green px-8 py-3.5 text-base font-medium text-white transition-all hover:bg-green-dark hover:shadow-lg hover:shadow-green/20"
               >
-                Dapatkan sebut harga percuma →
-              </Link>
+                <MessageCircle className="h-4 w-4" />
+                Borak dengan pakar
+              </a>
               <a
                 href="mailto:hello@jaga.care?subject=Pertanyaan persediaan rumah"
                 className="inline-flex items-center gap-2 rounded-full border border-brown/20 px-6 py-3 text-base font-medium text-brown transition-all hover:border-brown/40 hover:bg-warm-gray/50"
@@ -139,43 +151,60 @@ function HeroMs() {
 const howSteps = [
   {
     number: "01",
-    title: "Ambil gambar ruangan",
+    title: "Bercakap dengan pakar",
     description:
-      "Ambil gambar bilik yang perlu diubah — bilik mandi, bilik tidur, lorong. Hantar kepada kami dan kami akan mengenal pasti apa yang diperlukan.",
-    detail: "Emel atau borang",
+      "Beritahu kami tentang situasi kesihatan ibu bapa anda melalui WhatsApp atau sembang. Pakar penjagaan warga emas kami akan mendengar, bertanya soalan yang tepat, dan membantu anda menentukan apa yang ruangan anda perlukan.",
+    detail: "Tiada borang · hanya perbualan",
     color: "#2D7A6B",
     accent: "#E8F5F1",
   },
   {
     number: "02",
-    title: "Dapatkan cadangan anda",
+    title: "Ambil gambar ruangan",
     description:
-      "Pelan penjagaan yang disesuaikan tiba dalam 48 jam. Baca mengikut kadar anda — tiada tekanan. Ada soalan atau perubahan? Balas dan kami akan sesuaikan.",
-    detail: "Tiada obligasi · balas untuk sesuaikan",
+      "Ambil gambar bilik yang perlu diubah — bilik mandi, bilik tidur, lorong. Hantar kepada kami dan kami akan mengenal pasti apa yang diperlukan.",
+    detail: "Emel atau WhatsApp",
     color: "#1A5F7A",
     accent: "#E3F0F7",
   },
   {
     number: "03",
-    title: "Pilih tarikh anda",
+    title: "Dapatkan cadangan anda",
     description:
-      "Pilih tarikh dan masa yang sesuai untuk keluarga anda. Kami bekerja mengikut jadual keluar hospital.",
-    detail: "Jadual fleksibel",
+      "Pelan penjagaan yang disesuaikan tiba dalam 48 jam. Baca mengikut kadar anda — tiada tekanan. Ada soalan atau perubahan? Balas dan kami akan sesuaikan.",
+    detail: "Tiada obligasi · balas untuk sesuaikan",
     color: "#C27A2A",
     accent: "#FFF4E6",
   },
   {
     number: "04",
+    title: "Pilih tarikh anda",
+    description:
+      "Pilih tarikh dan masa yang sesuai untuk keluarga anda. Kami bekerja mengikut jadual keluar hospital.",
+    detail: "Jadual fleksibel",
+    color: "#6B4C8A",
+    accent: "#F0EBF5",
+  },
+  {
+    number: "05",
     title: "Rumah siap dalam 1 minggu",
     description:
       "Kontraktor bertauliah Jaga mengubah suai dan memasang segala-galanya. Jika tidak siap dalam satu minggu, anda dapat diskaun 20%.",
     detail: "Jaminan 1 minggu atau diskaun 20%",
-    color: "#6B4C8A",
-    accent: "#F0EBF5",
+    color: "#2D7A6B",
+    accent: "#E8F5F1",
   },
 ];
 
-const timelineLabels = ["Hari 1", "48 jam", "Anda pilih", "Dalam 1 minggu"];
+const timelineLabels = ["Hari ini", "Hari 1", "48 jam", "Anda pilih", "Dalam 1 minggu"];
+
+function ChatIcon({ color }: { color: string }) {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+    </svg>
+  );
+}
 
 function CameraIcon({ color }: { color: string }) {
   return (
@@ -216,7 +245,7 @@ function HomeCheckIcon({ color }: { color: string }) {
   );
 }
 
-const stepIcons = [CameraIcon, ClipboardCheckIcon, CalendarIcon, HomeCheckIcon];
+const stepIcons = [ChatIcon, CameraIcon, ClipboardCheckIcon, CalendarIcon, HomeCheckIcon];
 
 function HowItWorksMs() {
   const [hoveredStep, setHoveredStep] = useState<number | null>(null);
@@ -239,7 +268,7 @@ function HowItWorksMs() {
           </p>
         </AnimateIn>
 
-        <div className="mt-16 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-16 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-5">
           {howSteps.map((step, i) => {
             const Icon = stepIcons[i];
             const isHovered = hoveredStep === i;
@@ -360,15 +389,21 @@ function HowItWorksMs() {
               Bersedia untuk bermula?
             </h3>
             <p className="relative z-10 mt-3 text-sm text-white/80">
-              Beritahu kami tentang situasi anda dan kami akan uruskan.
+              Tidak pasti apa yang ibu bapa anda perlukan? Tiada masalah. Pakar
+              kami akan membantu anda menentukan pakej terbaik berdasarkan
+              kesihatan ibu bapa, mobiliti dan susun atur rumah anda.
             </p>
             <div className="relative z-10 mt-6 flex justify-center">
-              <Link
-                href="/ms/dapatkan-sebutharga"
-                className="inline-flex items-center rounded-full bg-white px-6 py-3 text-sm font-medium text-[#1A5F7A] transition-all hover:bg-white/90 hover:shadow-lg hover:-translate-y-1"
+              <a
+                href={getWhatsAppUrl(WA_DEFAULT_MS)}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackEvent("whatsapp_click", { location: "how_it_works_cta_ms" })}
+                className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-medium text-[#1A5F7A] transition-all hover:bg-white/90 hover:shadow-lg hover:-translate-y-1"
               >
-                Dapatkan sebut harga percuma →
-              </Link>
+                <MessageCircle className="h-4 w-4" />
+                Bercakap dengan pakar
+              </a>
             </div>
           </div>
         </AnimateIn>
@@ -415,7 +450,7 @@ const packagesMs: CarePackageMs[] = [
       { text: "Kerusi roda", included: false },
       { text: "Penjaga khusus", included: false },
     ],
-    cta: "Mula sekarang",
+    cta: "Bercakap dengan pakar",
     popular: false,
     priceFrom: { currency: "RM", amount: "2,274" },
   },
@@ -435,7 +470,7 @@ const packagesMs: CarePackageMs[] = [
       { text: "Kerusi roda", included: true },
       { text: "Penjaga khusus", included: false },
     ],
-    cta: "Mula sekarang",
+    cta: "Bercakap dengan pakar",
     popular: true,
   },
   {
@@ -454,7 +489,7 @@ const packagesMs: CarePackageMs[] = [
       { text: "Kerusi roda", included: true },
       { text: "Penjaga khusus", included: true },
     ],
-    cta: "Mula sekarang",
+    cta: "Bercakap dengan pakar",
     popular: false,
   },
 ];
@@ -598,21 +633,27 @@ function PackageCardMs({ pkg, delay }: { pkg: CarePackageMs; delay: number }) {
 
           <div className="mt-auto pt-6">
             {pkg.popular ? (
-              <Link
-                href={`/ms/dapatkan-sebutharga?package=${pkg.slug}`}
+              <a
+                href={getWhatsAppUrl(waPackageMessageMs(pkg.name))}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackEvent("whatsapp_click", { location: `package_card_ms_${pkg.slug}` })}
                 className="block w-full rounded-full px-6 py-2.5 text-center text-sm font-medium text-white transition-opacity hover:opacity-90"
                 style={{ backgroundColor: pkg.color }}
               >
                 {pkg.cta}
-              </Link>
+              </a>
             ) : (
-              <Link
-                href={`/ms/dapatkan-sebutharga?package=${pkg.slug}`}
+              <a
+                href={getWhatsAppUrl(waPackageMessageMs(pkg.name))}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackEvent("whatsapp_click", { location: `package_card_ms_${pkg.slug}` })}
                 className="block w-full rounded-full border px-6 py-2.5 text-center text-sm font-medium transition-opacity hover:opacity-80"
                 style={{ borderColor: pkg.color, color: pkg.color }}
               >
                 {pkg.cta}
-              </Link>
+              </a>
             )}
 
             <p className="mt-3 text-center text-xs text-text-muted">
@@ -663,15 +704,18 @@ function PackagesMs() {
               Tidak pasti tahap mana yang diperlukan?
             </p>
             <p className="mt-1 text-sm text-text-muted">
-              Emel kami dan kami akan bantu anda memilih.
+              Bercakap dengan pakar dan cari pakej yang sesuai dengan keperluan anda.
             </p>
             <div className="mt-4 flex justify-center">
               <a
-                href="mailto:hello@jaga.care?subject=Bantu saya pilih pakej"
+                href={getWhatsAppUrl(WA_HELP_CHOOSE_MS)}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackEvent("whatsapp_click", { location: "packages_help_choose_ms" })}
                 className="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white/50 px-6 py-2.5 text-sm font-medium text-text transition-all hover:bg-white hover:shadow-md"
               >
                 <MessageCircle className="h-4 w-4" />
-                Emel kami
+                Bercakap dengan pakar
               </a>
             </div>
           </div>
@@ -694,18 +738,23 @@ function QuoteCta() {
             Mula sekarang
           </p>
           <h2 className="mt-4 font-serif text-3xl leading-snug tracking-tight text-text sm:text-4xl lg:text-5xl">
-            Hantar gambar ruangan anda. Kami uruskan yang lain.
+            Beritahu kami tentang situasi anda. Pakar kami akan uruskan yang lain.
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-text-muted">
-            Isi borang ringkas dan kami akan kembali dengan pelan dan sebut harga dalam 48 jam.
+            Hubungi kami dan kami akan kembali dengan pelan dan sebut harga yang
+            disesuaikan dengan situasi anda.
           </p>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-            <Link
-              href="/ms/dapatkan-sebutharga"
-              className="inline-flex items-center rounded-full bg-green px-8 py-3.5 text-base font-medium text-white transition-all hover:bg-green-dark hover:shadow-lg hover:shadow-green/20"
+            <a
+              href={getWhatsAppUrl(WA_DEFAULT_MS)}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackEvent("whatsapp_click", { location: "ms_quote_cta" })}
+              className="inline-flex items-center gap-2 rounded-full bg-green px-8 py-3.5 text-base font-medium text-white transition-all hover:bg-green-dark hover:shadow-lg hover:shadow-green/20"
             >
-              Dapatkan sebut harga percuma →
-            </Link>
+              <MessageCircle className="h-4 w-4" />
+              Bercakap dengan pakar
+            </a>
             <a
               href="mailto:hello@jaga.care?subject=Pertanyaan persediaan rumah"
               className="inline-flex items-center gap-2 rounded-full border border-brown/20 px-6 py-3 text-base font-medium text-brown transition-all hover:border-brown/40 hover:bg-warm-gray/50"

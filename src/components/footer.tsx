@@ -69,12 +69,14 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/get-a-quote"
+                <a
+                  href="https://wa.me/6589499681?text=Hi%20Sumira%2C%20I%27d%20like%20to%20chat%20about%20home%20setup%20for%20my%20parent."
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="hover:text-white transition-colors"
                 >
-                  Get a quote
-                </Link>
+                  Talk to a specialist
+                </a>
               </li>
             </ul>
           </div>

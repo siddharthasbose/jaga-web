@@ -532,12 +532,14 @@ export default function GrabBarInstallationPage() {
                 Singapore.
               </p>
               <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
-                <Link
-                  href="/get-a-quote?package=make-it-safe"
+                <a
+                  href="https://wa.me/6589499681?text=Hi%20Sumira%2C%20I%27m%20interested%20in%20the%20Make%20it%20safe%20package."
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-block bg-green hover:bg-green-dark text-white px-8 py-3.5 rounded-full text-base font-medium transition-all"
                 >
-                  Get a free quote →
-                </Link>
+                  Talk to a specialist →
+                </a>
                 <Link
                   href="/packages/make-it-safe"
                   className="inline-block border border-green text-green px-8 py-3.5 rounded-full text-base font-medium transition-all hover:bg-green/5"

@@ -703,12 +703,14 @@ export default function PrepareHomeAfterStrokePage() {
                 within one week. Serving Malaysia and Singapore.
               </p>
               <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
-                <Link
-                  href="/get-a-quote"
+                <a
+                  href="https://wa.me/6589499681?text=Hi%20Sumira%2C%20I%27d%20like%20to%20chat%20about%20home%20setup%20for%20my%20parent."
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-block bg-green hover:bg-green-dark text-white px-8 py-3.5 rounded-full text-base font-medium transition-all"
                 >
-                  Get a free quote →
-                </Link>
+                  Talk to a specialist →
+                </a>
                 <Link
                   href="/packages"
                   className="inline-block border border-green text-green px-8 py-3.5 rounded-full text-base font-medium transition-all hover:bg-green/5"

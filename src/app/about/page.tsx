@@ -178,12 +178,14 @@ export default function AboutPage() {
           </AnimateIn>
           <AnimateIn delay={0.1}>
             <div className="mt-8">
-              <Link
-                href="/get-a-quote"
+              <a
+                href="https://wa.me/6589499681?text=Hi%20Sumira%2C%20I%27d%20like%20to%20chat%20about%20home%20setup%20for%20my%20parent."
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center rounded-full bg-green px-8 py-4 text-base font-medium text-white transition-all hover:bg-green-dark hover:shadow-lg hover:shadow-green/20"
               >
-                Get a free quote →
-              </Link>
+                Talk to a specialist →
+              </a>
             </div>
           </AnimateIn>
         </div>
