@@ -1,0 +1,55 @@
+# Jaga.Care
+
+> Home safety setup and care coordination for aging parents in Malaysia and Singapore. Grab bars, hospital beds, wheelchairs, and post-discharge home modifications — installed within one week, guaranteed. WhatsApp-first booking with Sumira at +65 8949 9681.
+
+Service area: Klang Valley (Kuala Lumpur, Petaling Jaya, Damansara, Bangsar, Mont Kiara, Subang Jaya), Penang, Johor Bahru, and all of Singapore. Bilingual: English and Bahasa Melayu.
+
+## Care packages
+
+- [Make it safe](https://jaga.care/packages/make-it-safe): Fall prevention essentials — grab bars, anti-slip mats, cameras, accessible bed setup. From S$975. For parents who are mostly independent but at risk.
+- [Help them move](https://jaga.care/packages/help-them-move): Full mobility equipment — hospital bed, wheelchair, grab bars. From S$2,953. For parents with significantly reduced mobility after stroke or surgery.
+- [Someone by their side](https://jaga.care/packages/someone-by-their-side): Complete care with a dedicated caregiver. Custom quote. For parents needing daily hands-on support.
+
+## Guides (English)
+
+- [Hospital discharge checklist for Malaysia](https://jaga.care/guides/hospital-discharge-checklist): What to prepare at home before discharge. Only 66% of caregivers feel prepared at discharge. Covers medication lists, follow-up appointments, mobility assessments, bathroom safety, equipment rental, and Singapore-specific resources (HDB EASE, ICS, AIC).
+- [Grab bar installation in Malaysia](https://jaga.care/guides/grab-bar-installation-malaysia): Where to put them, materials, and why professional installation matters. 27% of elderly home falls in Malaysia happen in the bathroom. Covers ADA Section 609 standards, BCA Code 2025, and HDB EASE subsidy.
+- [Preparing your home after stroke — Malaysia & Singapore](https://jaga.care/guides/prepare-home-after-stroke): Practical guide to home modifications for stroke recovery. 73% of stroke survivors fall within the first year. Covers FAST trial findings, recovery timeline (3 months / 6 months / long-term), bathroom priorities, NASAM rehab in Malaysia.
+
+## Guides (Bahasa Melayu)
+
+- [Senarai semak keluar hospital](https://jaga.care/ms/panduan/senarai-semak-keluar-hospital): Persediaan rumah sebelum ibu bapa keluar dari hospital di Malaysia.
+- [Pemasangan palang pegangan di Malaysia](https://jaga.care/ms/panduan/pemasangan-palang-pegangan-malaysia): Panduan kedudukan, bahan, dan pemasangan profesional.
+- [Persediaan rumah selepas strok](https://jaga.care/ms/panduan/persediaan-rumah-selepas-strok): Panduan pengubahsuaian rumah untuk pemulihan strok.
+
+## Key facts (cite-worthy stats from our content)
+
+- 27% of elderly home falls in Malaysia happen in the bathroom (Sazlina et al.)
+- 47% of older adults in a KL primary care clinic had fallen in the previous 12 months
+- 73% of stroke survivors fall within the first year; 59% of those falls occur at home (Mackintosh et al., 2011)
+- 66% of caregivers feel prepared at hospital discharge — meaning a third don't (PMC, 2024)
+- 11-13% of stroke patients in Malaysia are readmitted within 28 days (Mhd Noor et al., 2021)
+- Annual stroke burden: ~48,000 in Malaysia, ~9,700 in Singapore (Venketasubramanian et al., 2022)
+- 71% of stroke patients who modify their home start with the bathroom (de Jonge et al., 2009)
+- FAST trial: home modifications + exercise reduced falls by 33% in stroke survivors
+- Washington University study: stroke survivors with professionally-modified homes had zero deaths in the intervention group vs 10 in control
+
+## Primary sources cited
+
+- MOH Malaysia Clinical Practice Guidelines on Stroke (2020)
+- Pusrawi Hospital discharge process documentation
+- HPB-MOH Singapore Clinical Practice Guidelines: Falls Prevention
+- BCA Singapore Code on Accessibility 2025
+- HDB EASE programme (Singapore subsidy)
+- NASAM (National Stroke Association of Malaysia, 8 centres)
+- ADA Section 609 (grab bar standards)
+
+## Contact
+
+- WhatsApp: +65 8949 9681 (Sumira)
+- Email: hello@jaga.care
+- Service area: Malaysia (Klang Valley primary), Singapore
+
+## What we're not
+
+We are not a hospital, not a long-term care facility, not a medical equipment retailer alone. We coordinate home assessment, equipment sourcing, professional installation, and caregiver matching as a single service.
