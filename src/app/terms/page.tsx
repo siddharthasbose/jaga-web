@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   description:
     "Terms and conditions for using Jaga.Care home safety setup services in Malaysia and Singapore.",
   alternates: {
-    canonical: "https://jaga.care/terms",
+    canonical: "https://www.jaga.care/terms",
   },
 };
 

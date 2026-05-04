@@ -7,12 +7,12 @@ export const metadata: Metadata = {
   description:
     "27% kejatuhan warga emas di rumah Malaysia berlaku di bilik mandi. Panduan kedudukan, bahan, piawaian, dan pemasangan palang pegangan profesional untuk rumah Malaysia dan Singapura.",
   alternates: {
-    canonical: "https://jaga.care/ms/panduan/pemasangan-palang-pegangan-malaysia",
+    canonical: "https://www.jaga.care/ms/panduan/pemasangan-palang-pegangan-malaysia",
     languages: {
-      "en-MY": "https://jaga.care/guides/grab-bar-installation-malaysia",
-      "en-SG": "https://jaga.care/guides/grab-bar-installation-malaysia",
-      "ms-MY": "https://jaga.care/ms/panduan/pemasangan-palang-pegangan-malaysia",
-      "x-default": "https://jaga.care/guides/grab-bar-installation-malaysia",
+      "en-MY": "https://www.jaga.care/guides/grab-bar-installation-malaysia",
+      "en-SG": "https://www.jaga.care/guides/grab-bar-installation-malaysia",
+      "ms-MY": "https://www.jaga.care/ms/panduan/pemasangan-palang-pegangan-malaysia",
+      "x-default": "https://www.jaga.care/guides/grab-bar-installation-malaysia",
     },
   },
   keywords: [
@@ -34,8 +34,8 @@ const articleJsonLd = {
   headline: "Pemasangan Palang Pegangan di Malaysia",
   description:
     "Panduan kedudukan, bahan, piawaian, dan pemasangan palang pegangan profesional untuk keselamatan bilik mandi warga emas di Malaysia dan Singapura.",
-  author: { "@type": "Organization", name: "Jaga.Care", url: "https://jaga.care" },
-  publisher: { "@type": "Organization", name: "Jaga.Care", url: "https://jaga.care" },
+  author: { "@type": "Organization", name: "Jaga.Care", url: "https://www.jaga.care" },
+  publisher: { "@type": "Organization", name: "Jaga.Care", url: "https://www.jaga.care" },
   datePublished: "2026-03-25",
   dateModified: "2026-05-04",
 };

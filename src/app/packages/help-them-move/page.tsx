@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title: "Help Them Move — Hospital Bed & Mobility Equipment Rental",
   description: "Hospital bed rental, wheelchair, grab bars, and full mobility equipment setup at home. For parents recovering from stroke or surgery. Malaysia & Singapore.",
   alternates: {
-    canonical: "https://jaga.care/packages/help-them-move",
+    canonical: "https://www.jaga.care/packages/help-them-move",
   },
   keywords: [
     "hospital bed rental Malaysia", "hospital bed rental Singapore",
@@ -102,7 +102,7 @@ const serviceJsonLd = {
   provider: {
     "@type": "LocalBusiness",
     name: "Jaga.Care",
-    url: "https://jaga.care",
+    url: "https://www.jaga.care",
   },
   description: "Hospital bed rental, wheelchair, grab bars, and full home mobility setup for parents recovering from stroke or surgery in Malaysia and Singapore.",
   areaServed: [

@@ -8,12 +8,12 @@ export const metadata: Metadata = {
   description:
     "Hanya 66% penjaga berasa bersedia ketika keluar hospital. Senarai semak praktikal untuk keluarga di Malaysia dan Singapura yang membawa ibu bapa pulang selepas strok, pembedahan atau jatuh.",
   alternates: {
-    canonical: "https://jaga.care/ms/panduan/senarai-semak-keluar-hospital",
+    canonical: "https://www.jaga.care/ms/panduan/senarai-semak-keluar-hospital",
     languages: {
-      "en-MY": "https://jaga.care/guides/hospital-discharge-checklist",
-      "en-SG": "https://jaga.care/guides/hospital-discharge-checklist",
-      "ms-MY": "https://jaga.care/ms/panduan/senarai-semak-keluar-hospital",
-      "x-default": "https://jaga.care/guides/hospital-discharge-checklist",
+      "en-MY": "https://www.jaga.care/guides/hospital-discharge-checklist",
+      "en-SG": "https://www.jaga.care/guides/hospital-discharge-checklist",
+      "ms-MY": "https://www.jaga.care/ms/panduan/senarai-semak-keluar-hospital",
+      "x-default": "https://www.jaga.care/guides/hospital-discharge-checklist",
     },
   },
   keywords: [
@@ -37,8 +37,8 @@ const articleJsonLd = {
     "Senarai Semak Keluar Hospital — Apa yang Perlu Disediakan di Rumah",
   description:
     "Senarai semak praktikal untuk keluarga di Malaysia dan Singapura yang menyediakan rumah sebelum ibu bapa keluar dari hospital.",
-  author: { "@type": "Organization", name: "Jaga.Care", url: "https://jaga.care" },
-  publisher: { "@type": "Organization", name: "Jaga.Care", url: "https://jaga.care" },
+  author: { "@type": "Organization", name: "Jaga.Care", url: "https://www.jaga.care" },
+  publisher: { "@type": "Organization", name: "Jaga.Care", url: "https://www.jaga.care" },
   datePublished: "2026-03-25",
   dateModified: "2026-05-04",
 };

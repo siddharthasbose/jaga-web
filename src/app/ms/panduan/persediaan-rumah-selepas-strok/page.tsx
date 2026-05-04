@@ -7,12 +7,12 @@ export const metadata: Metadata = {
   description:
     "73% mangsa strok jatuh dalam tahun pertama — kebanyakannya di rumah. Panduan praktikal pengubahsuaian rumah, peralatan, dan persediaan keselamatan untuk pemulihan strok di Malaysia dan Singapura.",
   alternates: {
-    canonical: "https://jaga.care/ms/panduan/persediaan-rumah-selepas-strok",
+    canonical: "https://www.jaga.care/ms/panduan/persediaan-rumah-selepas-strok",
     languages: {
-      "en-MY": "https://jaga.care/guides/prepare-home-after-stroke",
-      "en-SG": "https://jaga.care/guides/prepare-home-after-stroke",
-      "ms-MY": "https://jaga.care/ms/panduan/persediaan-rumah-selepas-strok",
-      "x-default": "https://jaga.care/guides/prepare-home-after-stroke",
+      "en-MY": "https://www.jaga.care/guides/prepare-home-after-stroke",
+      "en-SG": "https://www.jaga.care/guides/prepare-home-after-stroke",
+      "ms-MY": "https://www.jaga.care/ms/panduan/persediaan-rumah-selepas-strok",
+      "x-default": "https://www.jaga.care/guides/prepare-home-after-stroke",
     },
   },
   keywords: [
@@ -34,8 +34,8 @@ const articleJsonLd = {
   headline: "Menyediakan Rumah Selepas Strok",
   description:
     "Panduan praktikal pengubahsuaian rumah, peralatan, dan persediaan keselamatan untuk pemulihan strok di Malaysia dan Singapura.",
-  author: { "@type": "Organization", name: "Jaga.Care", url: "https://jaga.care" },
-  publisher: { "@type": "Organization", name: "Jaga.Care", url: "https://jaga.care" },
+  author: { "@type": "Organization", name: "Jaga.Care", url: "https://www.jaga.care" },
+  publisher: { "@type": "Organization", name: "Jaga.Care", url: "https://www.jaga.care" },
   datePublished: "2026-03-25",
   dateModified: "2026-05-04",
 };

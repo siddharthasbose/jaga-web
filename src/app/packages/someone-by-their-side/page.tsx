@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title: "Someone By Their Side — Dedicated Caregiver & Full Home Setup",
   description: "Complete home safety setup with a dedicated caregiver for daily support. For parents recovering from major surgery, stroke, or with dementia. Malaysia & Singapore.",
   alternates: {
-    canonical: "https://jaga.care/packages/someone-by-their-side",
+    canonical: "https://www.jaga.care/packages/someone-by-their-side",
   },
   keywords: [
     "caregiver Malaysia", "caregiver Singapore",
@@ -106,7 +106,7 @@ const serviceJsonLd = {
   provider: {
     "@type": "LocalBusiness",
     name: "Jaga.Care",
-    url: "https://jaga.care",
+    url: "https://www.jaga.care",
   },
   description: "Complete home safety setup with dedicated caregiver for daily support. Hospital bed, wheelchair, grab bars, and hands-on care for parents recovering from stroke, surgery, or dementia.",
   areaServed: [

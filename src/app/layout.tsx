@@ -110,12 +110,12 @@ export const metadata: Metadata = {
     "prepare home for elderly parent",
   ],
   alternates: {
-    canonical: "https://jaga.care",
+    canonical: "https://www.jaga.care",
     languages: {
-      "en-MY": "https://jaga.care",
-      "en-SG": "https://jaga.care",
-      "ms-MY": "https://jaga.care/ms",
-      "x-default": "https://jaga.care",
+      "en-MY": "https://www.jaga.care",
+      "en-SG": "https://www.jaga.care",
+      "ms-MY": "https://www.jaga.care/ms",
+      "x-default": "https://www.jaga.care",
     },
   },
   verification: {
@@ -124,14 +124,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_SG",
-    url: "https://jaga.care",
+    url: "https://www.jaga.care",
     siteName: "Jaga.Care",
     title: "Jaga.Care — Home Ready Before They Are",
     description:
       "Home safety setup for aging parents. Serving Malaysia & Singapore.",
     images: [
       {
-        url: "https://jaga.care/images/og-image.png",
+        url: "https://www.jaga.care/images/og-image.png",
         width: 1200,
         height: 630,
         alt: "Jaga.Care — Home Ready Before They Are",
@@ -142,22 +142,22 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Jaga.Care — Home Ready Before They Are",
     description: "Home safety setup for aging parents. Serving Malaysia & Singapore.",
-    images: ["https://jaga.care/images/og-image.png"],
+    images: ["https://www.jaga.care/images/og-image.png"],
   },
 };
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "@id": "https://jaga.care/#localbusiness",
+  "@id": "https://www.jaga.care/#localbusiness",
   name: "Jaga.Care",
   description:
     "Home safety setup and care coordination for aging parents in Malaysia and Singapore. Grab bars, hospital beds, wheelchairs, and post-discharge home modifications.",
-  url: "https://jaga.care",
+  url: "https://www.jaga.care",
   email: "hello@jaga.care",
   telephone: "+6589499681",
   priceRange: "S$$",
-  image: "https://jaga.care/images/og-image.png",
+  image: "https://www.jaga.care/images/og-image.png",
   areaServed: [
     {
       "@type": "Country",

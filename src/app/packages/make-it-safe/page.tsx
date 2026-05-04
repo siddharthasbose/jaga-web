@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title: "Make It Safe — Fall Prevention & Home Safety Setup",
   description: "Professional grab bars installation, anti-slip mats, safety cameras, and accessible bed setup. Prevent elderly falls at home. Serving Malaysia & Singapore.",
   alternates: {
-    canonical: "https://jaga.care/packages/make-it-safe",
+    canonical: "https://www.jaga.care/packages/make-it-safe",
   },
   keywords: [
     "grab bars installation Malaysia", "grab bars installation Singapore",
@@ -91,7 +91,7 @@ const serviceJsonLd = {
   provider: {
     "@type": "LocalBusiness",
     name: "Jaga.Care",
-    url: "https://jaga.care",
+    url: "https://www.jaga.care",
   },
   description: "Professional grab bars installation, anti-slip treatment, safety cameras, and accessible bed setup for elderly fall prevention at home.",
   areaServed: [

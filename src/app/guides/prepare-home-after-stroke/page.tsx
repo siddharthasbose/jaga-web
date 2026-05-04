@@ -7,12 +7,12 @@ export const metadata: Metadata = {
   description:
     "73% of stroke survivors fall within the first year — most at home. A practical guide to home modifications, equipment, and safety setup for stroke recovery in Malaysia and Singapore.",
   alternates: {
-    canonical: "https://jaga.care/guides/prepare-home-after-stroke",
+    canonical: "https://www.jaga.care/guides/prepare-home-after-stroke",
     languages: {
-      "en-MY": "https://jaga.care/guides/prepare-home-after-stroke",
-      "en-SG": "https://jaga.care/guides/prepare-home-after-stroke",
-      "ms-MY": "https://jaga.care/ms/panduan/persediaan-rumah-selepas-strok",
-      "x-default": "https://jaga.care/guides/prepare-home-after-stroke",
+      "en-MY": "https://www.jaga.care/guides/prepare-home-after-stroke",
+      "en-SG": "https://www.jaga.care/guides/prepare-home-after-stroke",
+      "ms-MY": "https://www.jaga.care/ms/panduan/persediaan-rumah-selepas-strok",
+      "x-default": "https://www.jaga.care/guides/prepare-home-after-stroke",
     },
   },
   keywords: [
@@ -38,12 +38,12 @@ const articleJsonLd = {
   author: {
     "@type": "Organization",
     name: "Jaga.Care",
-    url: "https://jaga.care",
+    url: "https://www.jaga.care",
   },
   publisher: {
     "@type": "Organization",
     name: "Jaga.Care",
-    url: "https://jaga.care",
+    url: "https://www.jaga.care",
   },
   datePublished: "2026-03-25",
   dateModified: "2026-03-25",

@@ -8,12 +8,12 @@ export const metadata: Metadata = {
   description:
     "Only 66% of caregivers feel prepared at discharge. A practical checklist for Malaysian and Singaporean families bringing a parent home from hospital after stroke, surgery, or a fall.",
   alternates: {
-    canonical: "https://jaga.care/guides/hospital-discharge-checklist",
+    canonical: "https://www.jaga.care/guides/hospital-discharge-checklist",
     languages: {
-      "en-MY": "https://jaga.care/guides/hospital-discharge-checklist",
-      "en-SG": "https://jaga.care/guides/hospital-discharge-checklist",
-      "ms-MY": "https://jaga.care/ms/panduan/senarai-semak-keluar-hospital",
-      "x-default": "https://jaga.care/guides/hospital-discharge-checklist",
+      "en-MY": "https://www.jaga.care/guides/hospital-discharge-checklist",
+      "en-SG": "https://www.jaga.care/guides/hospital-discharge-checklist",
+      "ms-MY": "https://www.jaga.care/ms/panduan/senarai-semak-keluar-hospital",
+      "x-default": "https://www.jaga.care/guides/hospital-discharge-checklist",
     },
   },
   keywords: [
@@ -40,12 +40,12 @@ const articleJsonLd = {
   author: {
     "@type": "Organization",
     name: "Jaga.Care",
-    url: "https://jaga.care",
+    url: "https://www.jaga.care",
   },
   publisher: {
     "@type": "Organization",
     name: "Jaga.Care",
-    url: "https://jaga.care",
+    url: "https://www.jaga.care",
   },
   datePublished: "2026-03-25",
   dateModified: "2026-05-04",

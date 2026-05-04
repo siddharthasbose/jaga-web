@@ -30,25 +30,25 @@ export const metadata: Metadata = {
     "hospital bed rental Malaysia",
   ],
   alternates: {
-    canonical: "https://jaga.care/ms",
+    canonical: "https://www.jaga.care/ms",
     languages: {
-      "en-MY": "https://jaga.care",
-      "en-SG": "https://jaga.care",
-      "ms-MY": "https://jaga.care/ms",
-      "x-default": "https://jaga.care",
+      "en-MY": "https://www.jaga.care",
+      "en-SG": "https://www.jaga.care",
+      "ms-MY": "https://www.jaga.care/ms",
+      "x-default": "https://www.jaga.care",
     },
   },
   openGraph: {
     type: "website",
     locale: "ms_MY",
-    url: "https://jaga.care/ms",
+    url: "https://www.jaga.care/ms",
     siteName: "Jaga.Care",
     title: "Jaga.Care — Rumah Siap Sebelum Mereka Pulang",
     description:
       "Persediaan keselamatan rumah untuk ibu bapa yang semakin tua. Melayani Malaysia & Singapura.",
     images: [
       {
-        url: "https://jaga.care/images/og-image.png",
+        url: "https://www.jaga.care/images/og-image.png",
         width: 1200,
         height: 630,
         alt: "Jaga.Care — Rumah Siap Sebelum Mereka Pulang",
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     title: "Jaga.Care — Rumah Siap Sebelum Mereka Pulang",
     description:
       "Persediaan keselamatan rumah untuk ibu bapa yang semakin tua. Melayani Malaysia & Singapura.",
-    images: ["https://jaga.care/images/og-image.png"],
+    images: ["https://www.jaga.care/images/og-image.png"],
   },
 };
 

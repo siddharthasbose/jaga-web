@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   description:
     "How Jaga.Care collects, uses, and protects your personal information. Serving Malaysia and Singapore.",
   alternates: {
-    canonical: "https://jaga.care/privacy",
+    canonical: "https://www.jaga.care/privacy",
   },
 };
 
