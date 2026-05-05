@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import { AnimateIn } from "@/components/animate-in";
+import { RelatedGuides } from "@/components/related-guides";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -369,6 +370,10 @@ export default function PemasanganPalangPeganganPage() {
                 </Link>
               </div>
             </section>
+          </AnimateIn>
+
+          <AnimateIn>
+            <RelatedGuides currentSlugEn="grab-bar-installation-malaysia" lang="ms" />
           </AnimateIn>
 
           <AnimateIn>

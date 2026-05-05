@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import { AnimateIn } from "@/components/animate-in";
+import { RelatedGuides } from "@/components/related-guides";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -407,6 +408,10 @@ export default function SenaraiSemakKeluarHospitalPage() {
                 </a>
               </div>
             </section>
+          </AnimateIn>
+
+          <AnimateIn>
+            <RelatedGuides currentSlugEn="hospital-discharge-checklist" lang="ms" />
           </AnimateIn>
 
           <AnimateIn>

@@ -52,6 +52,9 @@ export function Nav() {
             <Link href="/#packages" className="hover:text-text transition-colors">
               Packages
             </Link>
+            <Link href="/guides" className="hover:text-text transition-colors">
+              Guides
+            </Link>
             <a
               href={waUrl}
               target="_blank"
@@ -107,6 +110,9 @@ export function Nav() {
               </Link>
               <Link href="/#packages" onClick={closeMenu} className="hover:text-green transition-colors">
                 Packages
+              </Link>
+              <Link href="/guides" onClick={closeMenu} className="hover:text-green transition-colors">
+                Guides
               </Link>
               <a
                 href={waUrl}

@@ -9,6 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const enRoutes: MetadataRoute.Sitemap = [
     { url: baseUrl, lastModified: now, changeFrequency: "weekly", priority: 1 },
     { url: `${baseUrl}/how-it-works`, lastModified: now, priority: 0.8 },
+    { url: `${baseUrl}/guides`, lastModified: now, changeFrequency: "weekly", priority: 0.85 },
     { url: `${baseUrl}/packages`, lastModified: now, priority: 0.8 },
     { url: `${baseUrl}/packages/make-it-safe`, lastModified: now, priority: 0.7 },
     { url: `${baseUrl}/packages/help-them-move`, lastModified: now, priority: 0.7 },
@@ -43,6 +44,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: "weekly",
       priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/ms/panduan`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.85,
     },
     {
       url: `${baseUrl}/ms/panduan/senarai-semak-keluar-hospital`,

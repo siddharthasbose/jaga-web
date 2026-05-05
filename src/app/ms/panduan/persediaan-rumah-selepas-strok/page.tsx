@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import { AnimateIn } from "@/components/animate-in";
+import { RelatedGuides } from "@/components/related-guides";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -457,6 +458,10 @@ export default function PersediaanRumahSelepasStrokPage() {
                 </Link>
               </div>
             </section>
+          </AnimateIn>
+
+          <AnimateIn>
+            <RelatedGuides currentSlugEn="prepare-home-after-stroke" lang="ms" />
           </AnimateIn>
 
           <AnimateIn>
