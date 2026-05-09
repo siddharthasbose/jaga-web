@@ -36,7 +36,7 @@ export const packages: CarePackage[] = [
     ],
     cta: "Talk to a specialist",
     popular: false,
-    priceFrom: { currency: "S$", amount: "975" },
+    priceFrom: { currency: "RM", amount: "1,723" },
   },
   {
     slug: "help-them-move",
@@ -57,7 +57,7 @@ export const packages: CarePackage[] = [
     ],
     cta: "Talk to a specialist",
     popular: true,
-    priceFrom: { currency: "S$", amount: "2,953" },
+    priceFrom: { currency: "RM", amount: "3,693" },
   },
   {
     slug: "someone-by-their-side",

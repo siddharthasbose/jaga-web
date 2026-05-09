@@ -156,7 +156,7 @@ const jsonLd = {
   url: "https://www.jaga.care",
   email: "hello@jaga.care",
   telephone: "+6589499681",
-  priceRange: "S$$",
+  priceRange: "RM$$",
   image: "https://www.jaga.care/images/og-image.png",
   areaServed: [
     {

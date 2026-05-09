@@ -452,7 +452,7 @@ const packagesMs: CarePackageMs[] = [
     ],
     cta: "Bercakap dengan pakar",
     popular: false,
-    priceFrom: { currency: "RM", amount: "2,274" },
+    priceFrom: { currency: "RM", amount: "1,723" },
   },
   {
     slug: "help-them-move",
@@ -472,6 +472,7 @@ const packagesMs: CarePackageMs[] = [
     ],
     cta: "Bercakap dengan pakar",
     popular: true,
+    priceFrom: { currency: "RM", amount: "3,693" },
   },
   {
     slug: "someone-by-their-side",
